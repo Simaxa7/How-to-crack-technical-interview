@@ -12,10 +12,10 @@ Estimate: ~30m*50 = 25h / 5d = 5h per day.
 # 1 Data Types
 ## Question 1
 ### 1.1 What are data types in javascript? High
-There are 8 basic data types in JavaScript.
+There are 7 primitive and others are complex data types in JavaScript.
 
 Seven primitive data types:
-- number for numbers of any kind: integer or floating-point, integers are limited by ±(253-1).
+- number for numbers of any kind: integer or floating-point, integers are limited by ±(2^53-1).
 - bigint for integer numbers of arbitrary length.
 - string for strings. A string may have zero or more characters, there’s no separate single-character type.
 - boolean for true/false.
@@ -23,7 +23,7 @@ Seven primitive data types:
 - undefined for unassigned values – a standalone type that has a single value undefined.
 - symbol for unique identifiers.
 
-And one non-primitive data type:
+non-primitive data type:
 - object for more complex data structures.
 
 ---
@@ -161,7 +161,37 @@ let clonedObj3 = { ...obj1 };
 Deep Copy
 ```javascript
 JSON.parse(JSON.stringify(obj))
-structuredClone(obj)
+```
+JSON.stringify() does not copy functions.
+
+`structuredClone(obj)`
+
+Lodash also provides a utility method _.cloneDeep() for deep cloning of objects in JavaScript.
+
+also you can use recursion and write code 
+
+```js
+const deepCopyFunction = (originalObject) => {
+    // if originalObject is not an object - Return the value 
+    if (typeof originalObject !== "object" || originalObject === null) {
+        return originalObject
+    }
+    // you can add additional conditionals for checking 
+    // instanceof Date, instanceof String, instanceof Number, instanceof Boolean, instanceof RegExp
+    // Create an [] or {} 
+    let outObject = Array.isArray(originalObject) ? [] : {}
+    for (let key in originalObject) {
+        outObject[key] = deepCopyFunction(originalObject[key]) // Recursion call
+    }
+
+    return outObject
+}
+
+const a = {b:1, c:{d:1}}
+const res = deepCopyFunction(a)
+console.log(a) //{b: 1, c: {…}}
+console.log(res) //{b: 1, c: {…}}
+console.log(a.c == res.c) //false
 ```
 
 ---

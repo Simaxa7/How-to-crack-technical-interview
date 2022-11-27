@@ -165,10 +165,132 @@ Behavioral design patterns are design patterns that identify common communicatio
 ## Question 15
 ### SOLID Principles HIGH
 1. [x] S - Single-responsibility Principle
+```js
+//Wrong way
+class Animal {
+    constructor(name: string){ }
+    getAnimalName() { }
+    saveAnimal(a: Animal) { }
+}
+//Correct way
+class Animal {
+    constructor(name: string){ }
+    getAnimalName() { }
+}
+class AnimalDB {
+    getAnimal(a: Animal) { }
+    saveAnimal(a: Animal) { }
+}
+```
 2. [x] O - Open-closed Principle
+```js
+
+
+//Wrong way
+class CoderFilter {
+    filterByName(coders, fullName) {
+        return coders.filter(coder => coder.fullName === fullName)
+    }
+}
+
+// if we want to sort not onle one this property we should use this way/
+//Correct way
+const filterByProp = (array, propName, value) =>
+    array.filter(element => element[propName] === value)
+
+```
 3. [x] L - Liskov Substitution Principle
+```js
+class Rectangle {
+  constructor(width, height) {
+    this._width = width
+    this._height = height
+  }
+
+  get width() { return this._width}
+  get height() { return this._height}
+
+  set width(value) { this._width = value }
+  set height(value) { this._height = value }
+
+  getArea() {
+    return this._width * this._height
+  }
+}
+
+class Square extends Rectangle {
+  constructor(size) {
+    super(size, size)
+  }
+  // not enough  
+}
+
+const square = new Square(2)
+square.width = 3
+console.log(square.getArea()) // 6 but we want 9
+
+class Square extends Rectangle {
+    constructor(size) {
+        super(size, size)
+    }
+  // this is correct 
+    set width(value) { this._width = this._height = value }
+    set height(value) { this._width = this._height = value }
+}
+
+```
+
 4. [x] I - Interface Segregation Principle
+```js
+class Phone {
+  constructor() {
+    if (this.constructor.name === 'Phone')
+      throw new Error('Phone class is absctract')
+  }
+
+  call(number) {}
+  takePhoto() {}
+  connectToWifi() {}
+}
+
+// for Iphone - correct
+class IPhone extends Phone {
+    call(number) { console.log('Implementation') }
+    takePhoto() { console.log('Implementation') }
+    connectToWifi() { console.log('Implementation') }
+}
+
+// home basic phone - we can't use next methods takePhoto,connectToWifi
+class Nokia3310 extends Phone {
+    call(number) { console.log('Implementation') }
+    takePhoto() { console.log ('do not have a camera') }
+    connectToWifi() {console.log ('do not know what wifi is') }
+}
+```
 5. [x] D - Dependency Inversion Principle
+```js
+class FileSystem {
+  writeToFile(data) {
+    // Implementation
+  }
+}
+
+class PersistanceManager {
+    saveData(db, data) {
+        if (db instanceof FileSystem) {
+            db.writeToFile(data)
+        }
+    }
+}
+//In this case, the high-level PersistanceManager module depends on the low-level module? we shuld some refactoring like that.
+class PersistanceManager {
+    saveData(db, data) {
+        db.save(data)
+    }
+}
+
+
+```
 
 ---
 

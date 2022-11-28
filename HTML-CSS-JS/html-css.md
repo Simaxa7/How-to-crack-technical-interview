@@ -205,7 +205,7 @@ Full width/height include content(content=width=100px)+paddings+borders=120px
 
 ---
 
-## Question 39
+## Question 29
 ### 2.6 Explain some pros and cons for CSS animations versus JavaScript animations  High
 CSS animations PROS:
 - is easier and more performance for simple animations
@@ -264,196 +264,272 @@ If you have 4 elements, then you will get two rows and three columns. in the fir
 
 ---
 
+## Week 2 (Questions with Medium priority)
 
-
-
-
----
-
----
-
----
-
-Week 2 (Questions with Medium priority)
 Number of questions: Medium = 12.
 Estimate: ~30m*12 = 6h / 5d = 1h 12m per day.
 
+---
 
-
-Index
-No.
-Questions
-Priority
-
-
-
-
-
-1
-HTML
-
-
-
-13
-1.13
-Ways to improve website performance
-Medium
-
-
-14
-1.14
-What does async and defer refer in script tag? Describe the difference between <script>, <script async> and <script defer>
-
-Medium
-
-
-15
-1.15
-What is an iframe and how does it work?
-Medium
-
-
-16
-1.16
-Explain the use of `rel="nofollow"`, `rel="noreferrer"`, `rel="noopener"` attribute?
-Medium
-
-
-17
-1.17
-Explain the use of `rel="preload"`, `rel="prefetch"`, `rel="preconnect"` attribute?
-Medium
-
-
-18
-1.18
-What does CORS stand for and what issue does it address?
-Medium
-
-
-19
-1.19
-What is the DOM? How does the DOM work?
-Medium
-
-
-
-2
-CSS
-
-
-
-33
-2.10
-What are the css selectors?
-Medium
-
-
-34
-2.11
-When to use css grid and flexbox?
-Medium
-
-
-35
-2.12
-What is CSS BEM?
-Medium
-
-
-36
-2.13
-Explain the CSS “box model” and the layout components that it consists of
-Medium
-
-
-37
-2.14
-What is CSS flexbox?
-Medium
+## Question 13
+### 1.13 Ways to improve website performance Medium
+Fix Broken URLs, Put CSS at the Top and JavaScript at the Bottom, Optimize images, Remove Unused scripts/plugins/css, minify scripts, use cache correctly, check the quality of the provider
 
 ---
 
----
+## Question 14
+### 1.14 What does async and defer refer in script tag? Describe the difference between `<script>`, `<script async>` and `<script defer>`
+
+`<script async>` is executed immediately after loading, good for independent scripts
+
+`<script defer>` they are loaded and executed sequentially, and with async – asynchronously. 
+
+In addition, defer always waits until the entire HTML document is ready
 
 ---
 
-Week 3 (Questions with Low priority)
+## Question 15
+### 1.15 What is an iframe and how does it work? Medium
+`iframe`  - another HTML element inside a web page.
+They are commonly used to external ads, videos, tags, or other interactive elements into the page.
+
+---
+
+## Question 16
+### 1.16 Explain the use of `rel="nofollow"`, `rel="noreferrer"`, `rel="noopener"` attribute? Medium
+
+`rel="noreferrer"` keeps external sites from knowing that you have included links to their material on your website
+
+`rel="nofollow"` that directs search engines not to use the link for page ranking calculations.
+
+`rel="noopener"`  - browser navigate to the target resource without granting the new browsing context access to the document that opened it
+
+---
+
+## Question 17
+### 1.17 Explain the use of `rel="preload"`, `rel="prefetch"`, `rel="preconnect"` attribute? Medium
+`rel="preload"` - the browser should download and cache a resource as soon as possible
+
+`rel="prefetch"` -the browser should download and cache a resource in the background
+
+`rel="preconnect"`  - the browser should download a resource as soon as possible because your page will set up a connection to another origin
+
+---
+
+## Question 18
+### 1.18 What does CORS stand for and what issue does it address? Medium
+
+CORS stands for Cross Origin Resource Sharing and is used to get around the browsers same-origin policy. For security purposes, a browser won't load requests for resources to other domains when those requests are initiated by scripts. CORS gets around this issue by supplying a special header that specifies which domains may make XMLHttpRequests for its resources.
+
+---
+
+## Question 19
+### 1.19 What is the DOM? How does the DOM work? Medium
+The DOM is an interface(API) that allows a programming language to manipulate the structure, the content and style of a website. The main object “document” has properties, methods, and events available for manipulating
+
+---
+
+## Question 33
+### 2.10 What are the css selectors? Medium
+`p {color: red}`
+A CSS selector is the first part of a CSS Rule. In ours example it is `“p”`
+CSS selectors can be tags(`p,a,img,div,body`), class(`.box, .container`), id (`#targetElement`)
+
+You can combine different types
+Body `div.contaner p {color: blue}`
+
+---
+
+## Question 34
+### 2.11 When to use css grid and flexbox? Medium
+CSS Grid - you can place components along the X- and Y dimensional
+
+CSS Flexbox -you can place components along only one dimensional
+
+---
+
+## Question 35
+### 2.12 What is CSS BEM? Medium
+BEM
+`[block]__[element]--[modifier]`
+* Block: The outermost parent element of the component is defined as the block.
+* Element: Inside the component may be one or more children called elements.
+* Modifier: Either a block or element may have a variation signified by a modifier.
+
+---
+
+## Question 36
+### 2.13 Explain the CSS “box model” and the layout components that it consists of Medium
+Content+paddings+borders+margins
+
+---
+
+## Question 37
+### 2.14 What is CSS flexbox? Medium
+The Flexible Box Layout Module, makes it easier to design flexible responsive layout structure without using float or positioning.
+
+2 main components of Flex-box:
+`-container display flex;`
+
+`flex-direction:` row; if you want all elements to be on a one line
+
+`flex-direction:` column; if you want each element to be on a new line
+
+`-flex-item` you can add a rule for one element
+
+---
+
+# Week 3 (Questions with Low priority)
+
 Number of questions: Low = 9.
 Estimate: ~30m*9 = 4h 30m / 5d = 54m per day.
 
+---
+
+## Question 20
+### 1.20 What is the CSSOM? Low
+The CSSOM is an interface(API) that allows a programming language to manipulate the CSS(example document.body.style.color )
+
+---
+
+## Question 21
+### 1.21 Explain the difference between layout, painting and compositing? Low
+* “layout” - Browser will calculate how much space each element takes up and where to place it
+* “painting” - drawing out text, colors, images, borders, and shadows, essentially every visual part of the elements.
+* “compositing” - parts of the page were drawn into potentially multiple layers they need to be drawn to the screen in the correct order
+
+---
+
+## Question 22
+### 1.22 What are the Benefits of Server Side Rendering (SSR) Over Client Side Rendering (CSR)? Low
+When we make a request to the webpage, the server prepares the HTML page with the required data (sometimes fetching from the database) and sends it to the user's machine.
+
+SSR  Benefits
+* An application has a simple UI, and it has not had many pages/features
+* An application doesn't have many dynamic data
+* Read preference of the site is more than write
+* SSR using  for not on rich sites and has few users
+
+---
+
+## Question 23
+### 1.23 What is difference between Select and Datalist? Low
+
+`Select` You can choose only one option from the given list, and you should scan a long list to select an option. The “onchange” event is fired immediately upon change.
+
+`Datalist` support browsers Chrome, Edge, Opera
+You can choose any option from the given list, and you can type your own option.
+the event is happened after the element loses focus or the user presses enter
+
+---
+
+## Question 38
+### 2.15 What is the difference between Pseudo-classes and pseudo-elements? Low
+
+Pseudo-classes are like ‘fake’ classes that are applied to elements under certain conditions
+* :link
+* :visited
+* :first-child
+* :nth-child(n)
+* And others
+
+Pseudo-elements effectively create new elements that are not specified in the markup of the document and can be manipulated much like a regular element.
+* ::before
+* ::after
+* ::first-letter
+* ::first-line
+
+---
+
+## Question 39
+### 2.16 How do you specify units in the CSS? Low
+
+Absolute lengths: `px`
+
+Relative lengths: `%` `em` `rem` `ex`
+
+Relative screen: `vw`, `vh`, `vmin`, `vmax`
+
+---
+
+## Question 40
+### 2.17 What is the difference between class selectors and id selectors?Low
+
+There can be any number of elements per page in one class but only one element with id
+
+---
+
+## Question 41
+### 2.18 What is the difference between the “nth-child()” and “nth-of-type()” selectors? Low
+nth-child(2) you send into brackets the rule and want to apply to this child
+```html
+<div>
+    <p></p> - first child
+    <div></div> - second child – you will change this element
+    <p></p> -third
+</div>
+```
+
+`p:nth-of-type(2)` you send into brackets the rule and want to apply to this child(witch have type p)
+```html
+<div>
+    <p></p> - first child (first child type p)
+    <div></div> - second child – (not type p)
+    <p></p> -third (second child type p) – you will change this element
+</div>
+```
+
+---
 
 
-Index
-No.
-Questions
-Priority
+## Question 42
+### 2.19 What is the difference between RGBa, HEX and HSLa? Low
 
+RGB Colors
 
+RGB colors work by mixing together different amounts of red (R), green (G), and blue (B). Each color (R, G, or B) can take on 1 of a possible 256 values (between 0 and 255). This results in 16,777,216 possible colors.
 
+```css
+h1 {
+  background-color: rgb(99, 21, 127);
+}
+```
+Opacity is a measure of how transparent a color is. To modify opacity in RGB colors, CSS offers the rgba() value. It represents the opacity of a color. The alpha value can be a number between 0 or 1, inclusive.
 
+RGBa Colors
+```css
+h1 {
+  color: rgba(123, 88, 9, 0.5);
+}
+```
 
-1
-HTML
+Hex color
 
+Hex color codes also offer 16,777,216 color options, but they follow a different syntax.
 
+RGB values and hex color codes are different ways to represent the same thing: color.
+```css
+h1 {
+  background-color: #ccaadd;
+}
+```
 
-20
-1.20
-What is the CSSOM?
-Low
+HSL color
 
+HSL stands for Hue, Saturation, and Lightness.
+* Hue - the technical term that describes what we understand as "color." In HSL, hue is represented on a color wheel. It can take on values between 0 and 360.
+* Saturation - the amount of gray in a given color. In HSL, saturation is specified using a percentage between 0% and 100%.
+* Lightness - the amount of white in a given color. Similar to saturation, lightness is specified using a percentage between 0% and 100%.
+```css
+h1 {
+  color: rgba(123, 88, 9, 0.5);
+}
+```
+HSLa color
+Opacity is a measure of how transparent a color is. To modify opacity in HSL colors, CSS offers the HSLa() value. It represents the opacity of a color. The alpha value can be a number between 0 or 1, inclusive.
 
-21
-1.21
-Explain the difference between layout, painting and compositing?
-Low
-
-
-22
-1.22
-What are the Benefits of Server Side Rendering (SSR) Over Client Side Rendering (CSR)?
-Low
-
-
-23
-1.23
-What is difference between Select and Datalist?
-Low
-
-
-
-2
-CSS
-
-
-
-38
-2.15
-What is the difference between Pseudo-classes and pseudo-elements?
-Low
-
-
-39
-2.16
-How do you specify units in the CSS?
-Low
-
-
-40
-2.17
-What is the difference between class selectors and id selectors?
-Low
-
-
-41
-2.18
-What is the difference between the “nth-child()” and “nth-of-type()” selectors?
-Low
-
-
-42
-2.19
-What is the difference between RGBa, HEX and HSLa?
-Low
-
+```css
+h1 {
+  color: hsla(239, 45%, 22%, 0.4);
+}
+```

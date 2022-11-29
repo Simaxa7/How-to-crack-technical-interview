@@ -139,6 +139,55 @@ how to get a NaN
 
 ---
 
+## Question 12
+### 1.12 Explain what a Symbol is in JavaScript? Medium
+
+Symbol — that's primitive and guaranteed to be unique
+Symbols are often used to add unique property keys to an object that won't collide with keys any other code might add to the object.
+```js
+Symbol('foo') === Symbol('foo')  // false
+```
+
+---
+## Question 13
+### 1.13 How do you check whether a string contains a substring? Medium
+method .`includes()` to test a string contains a substring
+
+```js
+const string = "Pavel Simashchanka";
+const subString = "Pavel";
+
+string.includes(subString); // true
+```
+
+method `.indexOf()` returns the index.
+If the index value is not equal to -1 then it means the substring exists in the main string.
+```js
+const string = "Pavel Simashchanka";
+const subString = "Pavel";
+const subString2 = "Simashchanka";
+
+console.log(string.indexOf(subString) !== -1);
+console.log('Our subString starts from index №', string.indexOf(subString) ) //0
+
+
+console.log( string.indexOf(subString) !== -1);
+console.log('Our subString starts from index №', string.indexOf(subString2) ) //6
+```
+
+method `RegExp.test` which allows for testing for against regular expressions
+
+```js
+const string = "Pavel Simashchanka";
+const subString = /Pavel/;
+const subString2 = /Simashchanka/;
+
+console.log(subString.test(string)); // true
+console.log(subString2.test(string)); // true
+```
+
+---
+
 # 2 Objects, Classes, Prototypal inheritance
 
 ---
@@ -206,6 +255,156 @@ This is syntactic sugar over prototypes
 ## Question 16
 ### 2.3 Explain how prototypal inheritance works? High
 All objects have a hidden property named `.prototype`. This property can be `null` or referenced to another object. When we try to read a property, and we can't find this property the next step we try to find this property in our .prototype
+
+---
+
+## Question 18
+### 2.4 How do you check if a key exists in an object? Medium
+
+using operator `in`
+```js
+const obj1={key:1};
+const obj2={notKey:1};
+
+console.log("key" in obj1); //true
+console.log("key" in obj2); //false
+```
+
+using method `hasOwnProperty`
+```js
+const obj1={key:1};
+const obj2={notKey:1};
+
+console.log(obj1.hasOwnProperty("key")); //true
+console.log(obj2.hasOwnProperty("key")); //false
+```
+
+«If it looks like a duck, swims like a duck and quacks like a duck, then it probably is a duck (who cares what it really is)»
+The meaning of duck typing is to check the necessary methods and properties.
+
+```js
+const obj1={key:1};
+const obj2={notKey:1};
+
+console.log(obj1.key !== undefined); // true
+console.log(obj2.key !== undefined); // false
+```
+
+---
+
+## Question 19
+### 2.5 What is the main difference between `Object.values` and `Object.entries` method? Medium
+
+For the full picture, I considered `Object.keys` method
+
+* `Object.keys` - returns array with keys
+* `Object.values` - returns array with values
+* `Object.entries` - - returns array with `[keys, value]`
+
+```js
+const user = {
+  name: "Pavel",
+  gender: "male",
+  city: 'Lithuania',
+};
+
+console.log(Object.keys(user)); // ['name', 'gender', 'city']
+console.log(Object.values(user)); //['Pavel', 'male', 'Lithuania']
+console.log(Object.entries(user)); //[['name', 'Pavel'] , ['gender', 'male'] , ['city', 'Lithuania']]
+```
+
+---
+
+## Question 20
+### 2.6 How can you get the list of keys of any object? Medium
+* `Object.keys` - returns array with keys
+```js
+const user = {
+  name: "Pavel",
+  gender: "male",
+  city: 'Lithuania',
+};
+
+console.log(Object.keys(user)); // ['name', 'gender', 'city']
+```
+
+* `for..in`
+```js
+const user = {
+    name: "Pavel",
+    gender: "male",
+    city: 'Lithuania',
+};
+const userKeyArr = [];
+for (const key in user) {
+    userKeyArr.push(key)
+}
+console.log(`userKeyArr:`, userKeyArr); //['name', 'gender', 'city']
+```
+
+---
+
+## Question 21
+### 2.7 What is a WeakSet? Medium
+The WeakSet object lets you store weakly held objects in a collection.
+
+WeakSet objects are collections of objects. Each object in a WeakSet may occur only once; all objects in a WeakSet's collection are unique.
+
+```js
+const ws = new WeakSet();
+const foo = {};
+const bar = {};
+const copyFoo = foo;
+
+ws.add(foo);
+ws.add(bar);
+ws.add(copyFoo)
+
+console.log(ws.has(foo)); // true
+console.log(ws.has(bar)); // true
+console.log(ws.has(copyFoo)); // true
+
+ws.delete(foo); // removes foo from the set
+console.log(ws.has(foo)); // false
+console.log(ws.has(bar)); // true
+console.log(ws.has(copyFoo)); // false
+```
+
+---
+
+## Question 22
+### 2.8 What are the differences between WeakSet and Set? Medium
+
+* The WeakSet object lets you store weakly held objects in a collection.
+* WeakSet can store only object where Set can store any type.
+* WeakSet does not have size property unlike Set
+* WeakSet does not have methods such as clear, keys, values, entries, forEach.
+* WeakSet is not iterable.
+
+---
+
+## Question 23
+### 2.9 What is a WeakMap? Medium
+The WeakMap object is a collection of key/value pairs in which the keys are weakly referenced. In this case, keys must be objects and the values can be arbitrary values.
+
+---
+
+## Question 24
+### 2.10 What are the differences between WeakMap and Map? Medium
+
+The main difference is that references to key objects in `Map` are strong while references to key objects in `WeakMap` are weak. i.e, A key object in `WeakMap` can be garbage collected if there is no other reference to it.
+
+* Maps can store any key type Whereas WeakMaps can store only collections of key objects
+* WeakMap does not have methods such as clear, keys, values, entries, forEach.
+* WeakMap is not iterable.
+* WeakMap does not have size property unlike Map
+
+---
+
+## Question 25
+### 2.11 What is the difference between proto and prototype? Medium
+
+The `__proto__`  is the property that is added by default for any object that is used in the lookup chain to resolve methods, etc. Whereas `prototype` is the object that is used to build `__proto__` when you create an object with `new`
 
 ---
 
@@ -338,6 +537,37 @@ console.log(myFn()) // null or window;
 
 ---
 
+## Question 38
+### 3.11 What are the problems with global variables? Medium
+
+* The problem with global variables is the conflict of variable names of local and global scope. 
+* Difficult to debug and test the code that relies on global variables.
+* Slower to lookup than the local variables.
+
+---
+
+## Question 39
+### 3.12 That is the Funarg problem? Medium
+
+The difficulty only arises if the body of a nested function refers directly (i.e., not by argument passing) to identifiers defined in the environment in which the function is defined, but not in the environment of the function call. A standard resolution is either to forbid such references or to create closures.
+
+---
+
+## Question 40
+### 3.13 How does 'this' work in the arrow functions? Medium
+
+allows shorthand syntax
+
+'arrow functions' don't have:
+- **this** (inherits parent context )
+- arguments
+- super
+- capacity to used as a constructor
+
+`(el1, el2)=>{return el1+el2}` or `el => el+1`
+
+---
+
 # 4 JSON
 
 ---
@@ -358,6 +588,13 @@ JSON.parse()
 ### 4.3 What is the purpose JSON stringify? High
 to converting JavaScript data into a JSON string.
 
+---
+
+## Question 44
+### 4.4 Why do you need JSON? Medium
+* JSON is text only
+* easily be sent to and from a server
+* used as a data format by any programming language.
 ---
 
 # 5 Array methods
@@ -390,6 +627,71 @@ Array.isArray(value)
 `const newArray = array.map` returns new array.
 
 `array.forEach( (element, index, **arr**) => { console.log(element, index, arr)})` returns undefined. If you change something in **arr** it is mutated original array 
+
+---
+
+## Question 48
+### 5.3 What is the purpose of the array slice method? Medium
+`array.slice(start, end)`
+* method returns selected elements in an array, as a new array.
+* method selects from a given start, up to a (not inclusive) given end.
+* method does not change the original array.
+```js
+let arr = [1, 2, 3, 4, 5];
+
+console.log(arr.slice(0)); //  [1, 2, 3, 4, 5]
+console.log(arr.slice(0, 2)); //  [1,2]
+console.log(arr.slice(2, 3)); //  [3]
+console.log(arr.slice(4)); // [5]
+console.log(arr.slice(0, -2)); // [1, 2, 3]
+console.log(arr.slice(-2)); // [4, 5]
+console.log(arr.slice(-2, 0)); // []
+```
+
+---
+
+## Question 49
+### 5.4 What is the purpose of the array splice method? Medium
+`array.splice(index, howmany, item1, ....., itemX)`
+* method adds and/or removes array elements.
+* method overwrites the original array.
+* method returns removed elements
+
+```js
+let arr = [1, 2, 3, 4, 5];
+console.log(arr); // [1, 2, 3, 4, 5] 
+
+let removedElements = arr.splice(1, 3, 7)
+console.log(arr); // [1, 7, 5]
+console.log(removedElements); // [ 2, 3, 4]
+```
+
+---
+
+## Question 50
+### 5.5 List arrays methods, that mutate source array? Medium
+```
+array.splice()
+array.push()
+array.pop()
+array.ushift()
+array.shift()
+array.push()
+array.sort()
+array.filter()
+```
+
+---
+
+## Question 51
+### 5.6 List arrays methods, that return new array? Medium
+```
+array.slice()
+array.concat()
+const newArr = [... arr]
+array.map()
+array.reverse()
+```
 
 ---
 
@@ -429,6 +731,69 @@ It starts immediately at the time of creation.
 ### 6.4 What is a callback function? High
 
 This is a function which provided as a parameter to another function.
+
+---
+
+## Question 56
+### 6.5 What is a first class function? Medium
+First-class functions means when functions in that language are treated like any other variable.
+
+---
+
+## Question 57
+### 6.6 What is a first order function? Medium
+First-order function is a function that does not accept another function as an argument and does not return a function as its return value.
+
+---
+
+## Question 58
+### 6.7 What is a Higher order function? Medium
+This is a wrapper function that takes one function, then adds a functional and returns a new one.
+
+A function which takes other functions as argument or a function returning another function is called Higher Order Function
+
+
+---
+
+## Question 59
+### 6.8 What is a unary function? Medium
+
+This is when our function takes only one argument.
+
+---
+
+## Question 60
+### 6.9 What is the currying function? Medium
+When function takes only one argument, but few times
+
+```js
+//it's NOT currying
+const func = (a, b, c) => a + b + c;
+func(2,4,6) //12
+``` 
+```js
+//it's currying
+const curryFunc = (a) => (b) => (c) => a + b + c;
+curryFunc(2)(4)(6)
+```
+
+---
+
+## Question 61
+### 6.10 What is an anonymous function? Medium
+
+An anonymous function is a function without a name.
+* can be assigned to a variable name
+```js
+const myFunc = function(){ //Anonymous function assigned to a variable
+};
+```
+* used as a callback function
+```js
+const arr = ['name', 'power'];
+const callBakFunk = (el)=>{console.log(el)}
+arr.forEach(callBakFunk)
+```
 
 ---
 
@@ -537,6 +902,69 @@ The Call Stack is a data structure which records basically where in the program 
 
 ---
 
+## Question 72
+### 7.11 What does `promise.all` method do? Medium
+* `Promise.all` is a promise that takes an array of promises as an input
+* it gets resolved when all the promises get resolved
+* it gets resolved when any one of them gets rejected
+* the order of the promises(output the result) is maintained as per input order.
+
+```js
+Promise
+    .all([Promise1, Promise2, Promise3]) 
+    .then((result) => {   console.log(result) }) 
+    .catch(error => console.log(`Error in promises ${error}`))
+
+```
+
+---
+
+## Question 72
+### 7.12 What is the difference between `promise.all` and `promise.allSettled`? Medium
+* `Promise.allSettled` is a promise that takes an array of promises as an input
+* returns a single Promise witch returns an array of objects that describe the outcome of each promise.
+
+final has next properties:
+* status:A string, either "fulfilled" or "rejected"
+* value: if status is "fulfilled". The value that the promise was fulfilled with.
+* reason: if status is "rejected". The reason that the promise was rejected with.
+
+```js
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+const promises = [promise1, promise2];
+
+Promise
+    .allSettled(promises)
+    .then((results) => results.forEach((result) => console.log(result.status)));
+
+// expected output:
+// "fulfilled"
+// "rejected"
+```
+
+---
+
+## Question 73
+### 7.13 What is the purpose of race method in promise? Medium
+
+Promise.race() method will return the promise instance which is firstly resolved or rejected.
+
+```js
+const promise1 = new Promise(function (resolve, reject) {
+  setTimeout(resolve, 500, "one");
+});
+const promise2 = new Promise(function (resolve, reject) {
+  setTimeout(resolve, 100, "two");
+});
+
+Promise.race([promise1, promise2]).then(function (value) {
+  console.log(value); // "two" // Both promises will resolve, but promise2 is faster
+});
+```
+
+---
+
 # 8 Common
 
 ---
@@ -603,10 +1031,94 @@ nodejs using for running web applications outside the client's browser.
 ---
 
 
-# 9 Browser API  
+## Question 80
+### 8.7 What is a strict mode in javascript? Medium
+`"use strict";`
+
+Strict mode is useful to write "secure" JavaScript by notifying "bad syntax" of real errors by throwing an error. 
+creating a global variable  
+* non-writable property
+* a non-existing property
+* a non-existing variable
+* or a non-existing object.
 
 ---
 
+## Question 81
+### 8.8 What are PWAs? Medium
+Progressive web applications (PWAs) are a type of mobile app delivered through the web, built using common web technologies including HTML, CSS and JavaScript.
+
+There are some key principles a web app should try to observe to be identified as a PWA. It should be:
+
+* Discoverable, so the contents can be found through search engines.
+* Installable, so it can be available on the device's home screen or app launcher.
+* Linkable, so you can share it by sending a URL.
+* Network independent, so it works offline or with a poor network connection.
+* Progressively enhanced, so it's still usable on a basic level on older browsers, but fully-functional on the latest ones.
+* 'Re-engage-able', so it's able to send notifications whenever there's new content available.
+* Responsively designed, so it's usable on any device with a screen and a browser—mobile phones, tablets, laptops, TVs, refrigerators, etc.
+* Secure, so the connections between the user, the app, and your server are secured against any third parties trying to get access to sensitive data.
+
+---
+
+## Question 82
+### 8.9 What is memoization? Medium
+
+Memoization needs to increase a function’s performance by caching its previously computed results.
+
+```js
+const memoizAddition = () => {
+  let cache = {};
+  return (value) => {
+    if (value in cache) {
+      console.log("Fetching from cache");
+      return cache[value];
+    } else {
+      console.log("Calculating result");
+      let result = value + 20;
+      cache[value] = result;
+      return result;
+    }
+  };
+};
+
+const addition = memoizAddition();
+console.log(addition(20)); //output: 40 calculated
+console.log(addition(20)); //output: 40 cached
+```
+
+---
+
+## Question 83
+### 8.10 How do you encode an URL? Medium
+You can use next function encodeURI()
+
+If you want to encode characters such as / ? : @ & = + $ # then you need to use encodeURIComponent().
+```js
+let uri = "employeeDetails?name=john&occupation=manager";
+let encoded_uri = encodeURI(uri);
+let decoded_uri = decodeURI(encoded_uri);
+```
+
+---
+
+## Question 84
+### 8.11 How do you decode an URL? Medium
+
+You can use next function decodeURI()
+
+If you want to encode characters such as / ? : @ & = + $ # then you need to use encodeURIComponent().
+```js
+let uri = "employeeDetails?name=john&occupation=manager";
+let encoded_uri = encodeURI(uri);
+let decoded_uri = decodeURI(encoded_uri);
+```
+
+---
+
+# 9 Browser API  
+
+---
 
 ## Question 87
 ### 9.1 What is the difference between window and document? High
@@ -614,3 +1126,73 @@ nodejs using for running web applications outside the client's browser.
 Windows is the main JavaScript object and refers to the whole browser windows with different APIs.
 
 `window.document`Document is an API for DOM tree.
+
+---
+
+## Question 88
+### 9.2 How do you get the current url with javascript? Medium
+
+`window.location.href` expression to get the current url path, and you can use the same expression for updating the URL too
+
+```
+console.log("location.href", window.location.href); // Returns full URL
+```
+
+---
+
+## Question 90
+### 9.3 What is a Fetch API? Medium
+
+The Fetch API provides a JavaScript interface for accessing and manipulating parts of the protocol, such as requests and responses
+
+```js
+const data = { username: 'example' };
+
+fetch('https://example.com/profile', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+```
+
+---
+
+## Question 94
+### 9.4 How to open two-way interactive session between browser and server? Medium
+The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between the user's browser and a server
+
+---
+
+## Question 95
+### 9.5 How to abort async operation? Medium
+
+```js
+const controller = new AbortController();
+const {signal} = controller;
+
+fetch("https://example.com", {signal})
+    .then((response) => {
+        console.log(`complete!`);
+    })
+    .catch((e) => {
+        e.name === "AbortError"
+            ? console.log(`request was cancelled!`)
+            : console.log(`other err!`, e);
+    });
+
+// Wait 2 seconds to abort a request.
+setTimeout(() => controller.abort(), 2000);
+```
+
+we can have more than 1 request
+
+---

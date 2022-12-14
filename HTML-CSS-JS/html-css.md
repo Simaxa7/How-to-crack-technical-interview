@@ -273,16 +273,67 @@ Estimate: ~30m*12 = 6h / 5d = 1h 12m per day.
 
 ## Question 13
 ### 1.13 Ways to improve website performance Medium
-Fix Broken URLs, Put CSS at the Top and JavaScript at the Bottom, Optimize images, Remove Unused scripts/plugins/css, minify scripts, use cache correctly, check the quality of the provider
+**Enable HTTP/2.** HTTP/2 is an evolution of HTTP/1 which comes with new features to improve page load speed in web browsers.
+* Multiplexing multiple requests over a single TCP connection.
+* Data compression of HTTP headers allows reducing the payload size (HPACK).
+* HTTP/2 Server Push allows the server to send resources to the client before the client requests them
+
+**Enable TLS 1.3**
+If you use HTTPS, you should consider using the latest version of TLS. The latest version of TLS, 1.3, provides more security but also better performance than its predecessors
+
+**Add caching information.** aching static files such as CSS and JS files is essentials to improve the performance of your application.
+
+**Minify JavaScript / CSS files.** Minifying consists of reducing the size of the JavaScript and Stylesheet files by removing comments, spaces, merging CSS rules, using shorthand properties, shortening variable/function names, replacing true by !0, and lots of advanced techniques.
+
+**Bundle JavaScript / CSS files.** Bundling files consists of merging multiple files into one file.
+* Bundle all files that are required to render the page
+* Create other bundles with the stylesheets that are less important to lazy load them
+* Bundle for a specific page
+
+**Async / Defer script**
+* `<script>`: block the parsing of the DOM, and execute the script
+* `<script defer>`: will download the script in the background and execute it once downloaded (useful for scripts such as Google Analytics)
+* `<script async>`: will download the script in the background and execute it after the DOM parsing
+
+**Lazy load CSS**
+
+**Inline JavaScript / CSS.** If the CSS or JS files are very small, you can consider embedding them in the page. This way you can avoid one network call but there are some drawbacks. First, the resource won't be cacheable. This means it will be downloaded every time.
+
+**Inline JavaScript / CSS**
+If the CSS or JS files are very small, you can consider embedding them in the page. This way you can avoid one network call but there are some drawbacks. First, the resource won't be cacheable. This means it will be downloaded every time.
+
+**Remove unused CSS rules**
+
+**Redirect directly to the final destination**
+
+**Use canonical instead of a redirection**
+
+**Optimize images**
+* Choose the right format
+* Use the right image size
+* Lazy load images
+* Use Web Fonts for icons
+
+**Move your servers near your visitors**
+
+**Replace social buttons scripts with static links**
+
+**Minify HTML**
+
+**Optimize JavaScript code**
+
+Putting CSS at the top - it's mean if you don't have only few styles you can put it in inline.
+
+by "provider" - i mean: Move your servers near your visitors
 
 ---
 
 ## Question 14
 ### 1.14 What does async and defer refer in script tag? Describe the difference between `<script>`, `<script async>` and `<script defer>`
 
-`<script async>` is executed immediately after loading, good for independent scripts
+`<script async>` will download the script in the background and execute it after the DOM parsing
 
-`<script defer>` they are loaded and executed sequentially, and with async – asynchronously. 
+`<script defer>` will download the script in the background and execute it once downloaded (useful for scripts such as Google Analytics)
 
 In addition, defer always waits until the entire HTML document is ready
 
@@ -290,8 +341,13 @@ In addition, defer always waits until the entire HTML document is ready
 
 ## Question 15
 ### 1.15 What is an iframe and how does it work? Medium
-`iframe`  - another HTML element inside a web page.
+`iframe`  - another HTML element inside a web page.   
+It has  nested browsing context, embedding another HTML page. It has own session history and document.
 They are commonly used to external ads, videos, tags, or other interactive elements into the page.
+
+> **Links**  
+> [https://habr.com/ru/post/488516/](https://habr.com/ru/post/488516/)  
+> [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe](https://habr.com/ru/post/488516/)
 
 ---
 
@@ -342,9 +398,12 @@ Body `div.contaner p {color: blue}`
 
 ## Question 34
 ### 2.11 When to use css grid and flexbox? Medium
-CSS Grid - you can place components along the X- and Y dimensional
+CSS Grid - you can place components along the X- and Y dimensional.  
+CSS Grid focuses on precise content placement. Each item is a grid cell, lined up along both a horizontal and a vertical axis. If you want to accurately control the position of items within a layout.  
+Grid allows you to create two-dimensional layouts where you can precisely place grid items into cells defined by rows and columns.
 
-CSS Flexbox -you can place components along only one dimensional
+CSS Flexbox -you can place components along only one the X- or Y dimensional.  
+flexbox enables you to allocate space and align items flexibly.
 
 ---
 
@@ -360,7 +419,15 @@ BEM
 
 ## Question 36
 ### 2.13 Explain the CSS “box model” and the layout components that it consists of Medium
+`box-sizing` changes the way the size of the content is calculated (whether to include borders and paddings or not).  
+
 Content+paddings+borders+margins
+
+This Area is bounded by the content edge and contains other element(s):
+Content Area: Content  
+Padding Area: Content+paddings  
+Border Area: Content+paddings+borders  
+Margin Area: Content+paddings+borders+margins  
 
 ---
 
@@ -404,11 +471,17 @@ The CSSOM is an interface(API) that allows a programming language to manipulate 
 ### 1.22 What are the Benefits of Server Side Rendering (SSR) Over Client Side Rendering (CSR)? Low
 When we make a request to the webpage, the server prepares the HTML page with the required data (sometimes fetching from the database) and sends it to the user's machine.
 
-SSR  Benefits
-* An application has a simple UI, and it has not had many pages/features
+SSR  Benefits:
+* Good for minimal and static sites.
 * An application doesn't have many dynamic data
 * Read preference of the site is more than write
-* SSR using  for not on rich sites and has few users
+* Search engines can crawl the site for better SEO.
+
+Downsides of SSR:
+* the site interactions are less.
+* Slow page rendering.
+* Full UI reloads.
+* Frequent server requests.
 
 ---
 

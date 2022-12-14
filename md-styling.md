@@ -21,6 +21,11 @@
 > lorem ipsum
 > lorem ipsum
 
+//Examples
+> **Links**
+> 
+> 
+
 
 ### Code
 ```javascript

@@ -1,7 +1,7 @@
 # React Interview Questions
 
 ## Core React
-001. 1. [x] **001** [ What is React? ](https://github.com/Simaxa7/How-to-crack-technical-interview/React/Answers/What_is_React.md ) | HIGH |
+001. 1. [x] **001** [ What is React? ](https://github.com/Simaxa7/How-to-crack-technical-interview/tree/main/React/Answers/What_is_React.md ) | HIGH |
 002. 1. [x] **002** [ What are the major features of React? ](Answers/What are the major features of React.md) | HIGH |
 003. 1. [x] **003** [ What is JSX? ](Answers/What is JSX.md) | HIGH |
 004. 1. [x] **003.1** [ Is it possible to use React without JSX? ](Answers/Is it possible to use react without JSX.md) | HIGH |

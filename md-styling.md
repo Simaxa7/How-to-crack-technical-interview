@@ -21,6 +21,11 @@
 > lorem ipsum
 > lorem ipsum
 
+//Examples
+> **Links**
+> 
+> 
+
 
 ### Code
 ```javascript
@@ -51,3 +56,20 @@ Or, check out the style guide [here](md-styling.md).
 | Swallow           | `Coconuts`   | Otherwise unladen             |
 | Bicycle           | Miss Gulch   | **Weatherproof**              |
 | X-34 landscaper   | Whiny boys   | Cheap since the X-38 came out |
+
+---
+
+:white_check_mark: Это уже сделано    
+:negative_squared_cross_mark: Я не буду это делать    
+:black_square_button: делать или не делать, вот в чем вопрос?
+
+---
+
+arrow:
+
+→
+←
+↑
+↓
+
+---

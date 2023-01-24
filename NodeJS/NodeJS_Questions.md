@@ -3,9 +3,9 @@
 | Index | No.      | Questions                                                                                      | Priority |
 |-------|----------|------------------------------------------------------------------------------------------------|----------|
 |       | **1**    | **Node.js**                                                                                    |          |
-| 1     | 1.1      | [What is Node.js?](#what-is-nodejs)                                                            | High     |
-| 2     | 1.2      | When to use Node.js and when not to use it?                                                    | Medium   |
-| 3     | 1.3      | What is package.json?                                                                          | High     |
+| 1     | 1.1      | [What is Node.js?](#11-what-is-nodejs)                                                         | High     |
+| 2     | 1.2      | [When to use Node.js and when not to use it?](#12-when-to-use-nodejs-and-when-not-to-use-it)   | Medium   |
+| 3     | 1.3      | [What is package.json?](#what-is-package.json)                                                 | High     |
 | 4     | 1.4      | What is the difference between dependencies and devDependencies in package.json?               | Low      |
 | 5     | 1.5      | What is npm?                                                                                   | Medium   |
 | 6     | 1.6      | What is the difference between Sync vs Async operations?                                       | Medium   |
@@ -98,7 +98,7 @@
 
 
 
-### What is NodeJS?
+### 1.1 What is NodeJS?
 
 **NodeJS** is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a browser. Node JS was created by Ryan Dahl, Ryan Dahl is a software engineer and the original developer of the Node.js JavaScript runtime.
 
@@ -107,3 +107,37 @@
 > - [NodeJS.org](https://nodejs.org/en/about/)
  
  **[ Back to Top ⬆ ](#table-of-contents-by-topics)**
+
+---
+
+### 1.2 When to use NodeJs and when not to use it?
+
+**What is Node.js used for?**
+* Real-time applications
+* IoT applications.
+* Collaborative tools
+* Data streaming applications
+* Applications relying on scalability
+
+**When is Node.js not a good idea?**
+* Applications with heavy computing server-side.
+* CRUD applications.
+* Server-side web applications with relational databases.
+
+> **References:**
+>
+> - [Why and When to Use Node.js](https://relevant.software/blog/why-and-when-to-use-node-js/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**
+
+---
+
+### 1.3 What is package.json?
+
+> **References:**
+>
+> - []()
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**
+
+---

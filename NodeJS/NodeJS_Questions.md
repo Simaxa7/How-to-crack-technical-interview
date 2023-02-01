@@ -332,7 +332,7 @@ Streams can be used when we are reading, writing, reading-writing or modifying d
 ---
 
 ### 1.13 What is the difference between commonJS and ES modules?
-CommonJS module system is the default module system within Nodejs. ES Modules were introducted as a new standard.
+CommonJS module system is the default module system within Nodejs. ES Modules were introduced as a new standard.
 
 1. CommonJS and ES Modules have different syntax and execution process for imports and exports. CommonJS imports are dynamically resolved at runtime, where ES Modules are executed at parse time. (The major difference in commonjs and ES module is of synchronous and asynchronous nature: commonjs modules are synchronous, loading and parsing of ES modules is asynchronous.) 
 2. File Extensions are another difference between CommonJS and ES Modules Files with `.js` extension are treated as CommonJS Modules and files with `.mjs` extension are treated as ES Modules.
@@ -365,9 +365,11 @@ console.log(add(5, 5));
 >
 > - [CommonJS vs. ES Modules](https://reflectoring.io/nodejs-modules-imports/)
 
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**
+
 ---
 
-### 1.14 How to force node.js to treat your  .js files as ES modules?
+### 1.14 How to force node.js to treat your .js files as ES modules?
 We can use `.mjs` file extension and specify that we're using `type: module` in our `package.json` file while using ES6 import/export syntax for our modules.
 
 However, you might want to configure your NodeJS project to use ES Modules as the default module system. Please consult the [NodeJS documentation on file extensions](https://nodejs.org/api/packages.html#packagejson-and-file-extensions) to find out how to correctly configure your project.

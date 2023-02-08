@@ -1,3 +1,7 @@
+[Devinterview-io/nodejs-interview-questions](https://github.com/Devinterview-io/nodejs-interview-questions)
+[https://gist.github.com/paulfranco/9f88a2879b7b7d88de5d1921aef2093b](https://gist.github.com/paulfranco/9f88a2879b7b7d88de5d1921aef2093b)
+
+
 # Table of Contents by topics
 
 | Index | No.      | Questions                                                                                                                                                              | Priority |
@@ -32,14 +36,14 @@
 
 ## 3 Express.js
 
-| Index | No.   | Questions                                                                      | Priority |
-|-------|-------|--------------------------------------------------------------------------------|----------|
-|       | **3** | **Express.js**                                                                 |          |
-| 21    | 3.1   | What is Express.js and what is its use?                                        | Medium   |
-| 22    | 3.2   | What are the main building blocks of Express.js?                               | Medium   |
-| 23    | 3.3   | What are the purposes for middlewares in Express.js?                           | High     |
-| 24    | 3.4   | What is the use of **next** in Express.js?                                     | Medium   |
-| 25    | 3.5   | How can you differ an error handling function from a request handler function? | Low      | 
+| Index | No.   | Questions                                                                                              | Priority |
+|-------|-------|--------------------------------------------------------------------------------------------------------|----------|
+|       | **3** | **Express.js**                                                                                         |          |
+| 21    | 3.1   | [What is Express.js and what is its use?](#31-what-is-expressjs-and-what-is-its-use)                   | Medium   |
+| 22    | 3.2   | [What are the main building blocks of Express.js?](#32-what-are-the-main-building-blocks-of-expressjs) | Medium   |
+| 23    | 3.3   | What are the purposes for middlewares in Express.js?                                                   | High     |
+| 24    | 3.4   | What is the use of **next** in Express.js?                                                             | Medium   |
+| 25    | 3.5   | How can you differ an error handling function from a request handler function?                         | Low      | 
 
 ## 4 NestJS
 
@@ -657,13 +661,46 @@ readdir('process.cwd()')
 
 ## 3 Answers Express.js
 
-### 3.1 
+### 3.1 What is Express.js and what is its use?
+Express is a node js web application framework that provides broad features for building web and mobile applications. It is used to build a single page, multipage, and hybrid web application.
+
+It's a layer built on the top of the Node js that helps manage servers and routes.
+
+Why Express JS?
+* Express was created to make APIs and web applications with ease,
+* It saves a lot of coding time almost by half and still makes web and
+* mobile applications are efficient.
+* Another reason for using express is that it is written in javascript as javascript is an easy language even if you don't have a previous
+* knowledge of any language. Express lets so many new developers enter the field of web development.
+The reason behind creating an express framework for node js is:
+
+* Time-efficient
+* Fast
+* Economical
+* Easy to learn
+* Asynchronous
+
+> **References:**
+>
+> - [Express/Node introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
+> - [What is Express.js?](https://www.codecademy.com/article/what-is-express-js)
+> - [Express.js](https://www.geeksforgeeks.org/express-js/)
+> - [What Is Express JS In Node JS? text+video](https://www.simplilearn.com/tutorials/nodejs-tutorial/what-is-express-js#what_is_express_js)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Express.js ⬆ ](#3-expressjs)**
+
+---
+
+### 3.2 What are the main building blocks of Express.js?
+
 
 > **References:**
 >
 > - []()
 > - []()
 > - []()
+> - [Building Blocks of ExpressJS Jingle fanny song](https://www.youtube.com/watch?v=98sZfNTqzI0)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ Back to Express.js ⬆ ](#3-expressjs)**

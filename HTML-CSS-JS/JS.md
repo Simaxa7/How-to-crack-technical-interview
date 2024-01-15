@@ -84,7 +84,8 @@ The === operator at first checks type than checks if two values are equal.
 
 ```
 "2" === 2 // false
-"2" === 2 // true
+2 === 2 // true
+"2" === "2" // true
 ```
 
 ---

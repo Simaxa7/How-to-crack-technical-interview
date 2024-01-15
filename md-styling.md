@@ -73,3 +73,14 @@ arrow:
 ↓
 
 ---
+
+<details>
+    <summary>   
+        <b>DropDown</b>    
+    </summary>   
+    <p>Some text</p>
+        ```
+        some code
+        ```
+
+</details>

@@ -76,19 +76,19 @@
 
 ## 7 Software design
 
-| Index | No.   | Questions                                                                           | Priority |
-|-------|-------|-------------------------------------------------------------------------------------|----------|
-|       | **7** | **Software design**                                                                 |          |
-| 37    | 7.1   | REST API: What is it?                                                               | High     |
-| 38    | 7.1.1 | REST API: What are the Levels of REST API?                                          | Low      |
-| 39    | 7.1.2 | REST API: What constraints does the REST have?                                      | Medium   |
-| 40    | 7.1.3 | REST API: Name the main Http methods. What is the difference between Put and Patch? | High     |
-| 41    | 7.1.4 | REST API: What status should be sent in a response to a create object request?      | Medium   |
-| 42    | 7.2   | explain the MVC model.                                                              | High     |
-| 43    | 7.3   | What is GraphQL? What are its advantages over REST API?                             | Low      |
-| 44    | 7.4   | Name the key principles of OOP?                                                     | High     |
-| 45    | 7.5   | What is a dependency injection?                                                     | Medium   |
-| 46    | 7.6   | What is a Layered Architecture? Give a few examples                                 | Medium   |
+| Index | No.   | Questions                                                                                   | Priority |
+|-------|-------|---------------------------------------------------------------------------------------------|----------|
+|       | **7** | **Software design**                                                                         |          |
+| 37    | 7.1   | [REST API: What is it?](#71-rest-api-what-is-it)                                            | High     |
+| 38    | 7.1.1 | [REST API: What are the Levels of REST API?](#711-rest-api-what-are-the-levels-of-rest-api) | Low      |
+| 39    | 7.1.2 | REST API: What constraints does the REST have?                                              | Medium   |
+| 40    | 7.1.3 | REST API: Name the main Http methods. What is the difference between Put and Patch?         | High     |
+| 41    | 7.1.4 | REST API: What status should be sent in a response to a create object request?              | Medium   |
+| 42    | 7.2   | explain the MVC model.                                                                      | High     |
+| 43    | 7.3   | What is GraphQL? What are its advantages over REST API?                                     | Low      |
+| 44    | 7.4   | Name the key principles of OOP?                                                             | High     |
+| 45    | 7.5   | What is a dependency injection?                                                             | Medium   |
+| 46    | 7.6   | What is a Layered Architecture? Give a few examples                                         | Medium   |
 
 ## 8 Databases
 
@@ -96,7 +96,7 @@
 |-------|----------|------------------------------------------------------------------|----------|
 |       | **8**    | **Databases**                                                    |          |
 |       | 8.1      | **_RDBMS_ (Postgres or MySQL)**                                  |          |
-| 47    | 8.1.0    | RDBMS: What is it?                                               | High     |
+| 47    | 8.1.0    | [RDBMS: What is it?](#810-rdbms-what-is-it)                      | High     |
 | 48    | 8.1.1    | How data is stored in RDBMS?                                     | High     |
 | 49    | 8.1.2    | What is a normalization concept?                                 | Medium   |
 | 50    | 8.1.3    | What table relationships do you know? How to create them?        | Medium   |
@@ -706,3 +706,902 @@ The reason behind creating an express framework for node js is:
 **[ Back to Express.js ⬆ ](#3-expressjs)**
 
 ---
+### 3.3 What are the purposes for middlewares in Express.js?  
+In Express.js, middleware plays a crucial role in handling requests and responses. The main purposes of using middleware in Express.js include:
+
+* Request and response handling: Middleware provides functions to manipulate the request (req) and response (res) objects. This can involve modifying data, adding headers, or interrupting the processing cycle.
+
+* Controlling the execution flow: Middleware can influence the order of route handler execution, skip or interrupt requests based on specific conditions.
+
+* Error handling: Middleware can intercept errors occurring during request processing and take appropriate actions, such as sending error messages to clients.
+
+* Authentication and authorization: Middleware is often used for user authentication and managing access to specific application resources.
+
+* Logging and monitoring: Middleware can log information about requests, aiding in tracking application behavior and identifying issues.
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Express.js ⬆ ](#3-expressjs)**
+---
+
+3.4   | What is the use of **next** in Express.js?                                                             | Medium   |
+
+In Express.js, the next function is a callback representing the next middleware function in the application's request-response cycle. It is a fundamental part of middleware functions in Express.js and is crucial for controlling the flow of execution.
+
+When a middleware function is executed, it can perform its tasks and then call the next function to pass control to the next middleware function in line. This allows middleware to be executed sequentially, each handling a specific aspect of request processing.
+
+The next function can be used to:
+
+Pass control to the next middleware: By invoking next(), the current middleware indicates that it has completed its tasks, and Express should proceed to the next middleware in the stack.
+
+Skip remaining middleware: If the next function is not called, the control won't be passed to the next middleware in the stack, effectively skipping the remaining middleware functions.
+
+Handle errors: When the next function is called with an argument (typically named err), Express interprets it as an error, and the control is passed to the error-handling middleware, allowing centralized error handling.
+
+The next function is a mechanism for middleware to work together cohesively and maintain a structured flow of execution in an Express.js application.
+
+---
+3.5   | How can you differ an error handling function from a request handler function?                         | Low      | 
+
+In Express.js, error handlers and request handlers differ in their signatures and usage. Here are the main differences:
+
+Function Signature:
+
+An error handler typically has four parameters: (err, req, res, next). The first parameter (err) represents the error that occurred in previous middleware functions.
+Request handlers have three parameters: (req, res, next). They are designed to handle specific requests and do not include a parameter for error handling.
+Placement in Code:
+
+Error handlers are usually placed at the very end of the middleware stack, after all the request handlers. They serve as a fallback for handling errors that may have occurred in other parts of the application.
+Request handlers are placed higher in the code and are intended for the specific handling of certain routes or types of requests.
+
+Example of an error handler:
+
+app.use((err, req, res, next) => {
+console.error(err.stack);
+res.status(500).send('Something went wrong!');
+});
+
+Example of a request handler:
+app.get('/example', (req, res, next) => {
+// Request handling logic
+res.send('Response to example request');
+});
+
+
+---
+5.1   | What is a Health check? Why do we need it?
+A health check is a regular process in software development and system administration where the status of a system or component is periodically monitored to ensure its proper functioning. It involves regularly checking the health or state of a service, server, or application to ensure that it is operational and performing as expected.
+
+Key Points:
+
+Monitoring System Health: Health checks involve evaluating various metrics, such as response time, error rates, resource utilization, and more, to determine the overall health of a system.
+
+Frequent and Automated: Health checks are often performed frequently and automatically. Automated health checks help in identifying issues promptly and enable proactive responses.
+
+Endpoint or Route: A health check is typically implemented through a dedicated endpoint or route that returns information about the system's state.
+
+Why it is needed:
+
+Early Problem Detection: Enables detecting issues before they significantly impact system functionality.
+Ensuring Availability: Ensures that the system remains available and ready to handle requests.
+Planning Maintenance: Assists in determining suitable times for maintenance or updates.
+Improving User Experience: Allows for anticipating and addressing issues, thereby enhancing the end-user experience.
+
+---
+
+5.2   | What is a correlation ID? How it helps to debug your application?
+A Correlation ID is a unique identifier assigned to a request when it is sent, and then passed through all the components of the system involved in processing that request. This identifier is used to link various logs and events related to a specific request or transaction.
+
+How it works:
+
+Assignment and Transmission: When a request is sent, a unique Correlation ID is generated and assigned. This identifier is passed along with the request through all levels of the application.
+
+Linking Information: Each component of the system through which the request passes registers its actions, including the Correlation ID. Thus, all logs and events are associated with the same identifier.
+
+Ease of Debugging: When an issue or error occurs, logs can be analyzed using the Correlation ID to identify all events related to the request. This significantly simplifies debugging and issue identification.
+
+How it aids in debugging the application:
+
+Request Tracing: Enables tracing the path of a request through various components of the application.
+Fault Point Identification: Facilitates pinpointing where problems or errors occur.
+Performance Analysis: Allows analyzing the request execution time and identifying performance bottlenecks.
+Overall, Correlation ID is a powerful tool for organizing logging and debugging in distributed systems.
+
+---
+
+6.1   | What is a test pyramid? How can you implement it regarding HTTP APIs?
+
+
+The Test Pyramid is a testing organization concept introduced by Martin Fowler. It represents a hierarchy of different levels of tests, where tests are categorized into three main layers: the bottom layer (low strength) - unit tests, the middle layer - integration tests, and the top layer (high strength) - functional tests.
+
+Key concepts of the Test Pyramid:
+
+Unit Tests: These tests verify individual components or modules of the program for the correctness of their isolated functionality. They serve as the foundational building block of the test pyramid.
+
+Integration Tests: These tests check the interaction between components or modules, as well as their proper integration into the system as a whole. They ensure the overall functionality of the system.
+
+Functional Tests: These tests validate the functionality of the entire system, taking into account its functional requirements. They represent the top level of the Test Pyramid.
+
+Applying the Test Pyramid to HTTP API:
+
+Unit Tests: For an HTTP API, these can be tests for individual request handlers, checking their handling of requests, and generating correct responses.
+
+Integration Tests: This involves verifying the interaction between different components of the HTTP API, such as between request handlers and the database. Tests may also include checking interactions with external services.
+
+Functional Tests: These tests verify the entire API as a cohesive unit. They may involve sending HTTP requests to the API and checking the received responses, as well as testing various usage scenarios.
+
+Advantages of Using the Test Pyramid:
+
+Provides a broad range of checks at different levels.
+Facilitates early detection and resolution of defects.
+Reduces testing costs since unit tests are cheaper to maintain and execute than functional tests.
+
+---
+
+6.2   | What is a Given-When-Then pattern? 
+
+The Given-When-Then pattern is a testing and specification pattern used to structure and define the steps in a test or a behavior specification. It provides a clear and consistent way of describing the conditions, actions, and expected outcomes in a test scenario.
+
+Given: In this step, the initial conditions or prerequisites necessary for the test or scenario are established.
+
+When: This step describes the specific action or event that triggers the execution of the test. It represents what is being tested.
+
+Then: In this step, the expected outcomes or results of the system after the action described in the "When" step are formulated.
+
+Example of using the pattern:
+Let's consider a test for user authentication:
+
+Given: A user exists in the system with valid credentials.
+When: The user enters the correct credentials and clicks the "Login" button.
+Then: The system should successfully authenticate the user and display the personal dashboard.
+Advantages of Using Given-When-Then:
+
+Clarity: Helps articulate test scenarios and system requirements clearly and concisely.
+Structured Format: Provides a structured format for describing the steps of test scenarios.
+Readability: Improves readability and understanding of tests for both developers and other stakeholders.
+
+---
+
+6.3   | What mocks and stubs are? How are they used in integration testing?
+
+Mock and Stub are tools used in software testing to create controlled conditions and verify interactions between application components. They are applied in integration testing to emulate or substitute real objects and ensure predictable behavior.
+
+Mock:
+
+Definition: A mock is an object that replaces a real component and records information about how it was called.
+Usage in testing: Mocks are used to verify interactions between components. They record how many times a method of an object was called and with which parameters.
+Stub:
+
+Definition: A stub is an object designed to substitute a real object and return predefined results when its methods are called.
+Usage in testing: Stubs are used to create controlled conditions and return specified values or simulate certain scenarios when methods are called.
+Application in Integration Testing:
+
+Emulating external services: Using mocks and stubs allows emulating external services or dependencies to test how the system interacts with them.
+Controlled conditions: Mocks and stubs provide controlled conditions for tests where specific interaction scenarios between components can be verified.
+
+
+---
+
+6.4   | What test runner libraries do you know? 
+
+Mocha
+Jest
+Jasmine
+Chai
+
+---
+
+6.5   | What is Unit-testing? What are the FIRST principles?
+
+Unit testing is the process of verifying the correctness of individual components (units) of a program. These components could be functions, methods, classes, or even entire modules. The FIRST principles are a set of guidelines for writing effective unit tests.
+
+Fast:
+
+Tests should run quickly to provide rapid feedback during development. Slow tests can slow down the development process.
+Independent:
+
+Tests should be independent of each other. The outcome of one test should not affect the result of another. This ensures isolated tests and reduces the likelihood of errors.
+Repeatable:
+
+Tests should be repeatable in any execution environment. They should not depend on the environment, data, or execution order. This ensures test reliability under various conditions.
+Self-Validating:
+
+Test results should be self-validating. A test should automatically determine whether it has succeeded or failed without requiring manual verification.
+Timely:
+
+Tests should be written before the code they test. This helps prevent errors at early stages of development.
+Applying these principles ensures the creation of efficient, reliable, and easily maintainable tests, which are crucial components of the development process.
+
+---
+
+---
+
+### 7.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+
+
+### 7.1 REST API: What is it?
+
+REST API (Representational State Transfer) is a structured set of rules and constraints for building web services. This architectural style was proposed by Roy Fielding in 2000.
+
+The key principles of REST API include:
+
+Resources: Resources represent objects or services you want to access through the API. Resources are identified by unique URIs (Uniform Resource Identifiers).
+
+Representation: Resources can have multiple representations (e.g., JSON, XML) that define how data can be presented.
+
+Actions on Resources: Interaction with resources is done through standard HTTP methods such as GET (retrieve data), POST (create new data), PUT (update data), and DELETE (remove data).
+
+Statelessness: Each client request contains all the necessary information for its execution, and the server doesn't store state between requests.
+
+REST API is widely used for building web services that provide access to data and functionality through standard HTTP protocol interfaces.
+
+
+> **References:**
+>
+> - [ibm.com](https://www.ibm.com/topics/rest-apis)
+> - [habr](https://habr.com/ru/articles/483202/)
+> - [video](https://www.youtube.com/watch?v=lsMQRaeKNDk)
+> - [video](https://www.youtube.com/watch?v=qbLc5a9jdXo)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+
+### 7.1.1 REST API: What are the Levels of REST API?
+
+The levels of REST API, often referred to as Richardson Maturity Model, are a set of criteria or principles that define the sophistication and adherence to RESTful principles in a web service. There are four levels in this model:
+
+Level 0 - The Swamp of POX (Plain Old XML): In this level, the web service doesn't adhere to REST principles and simply uses HTTP as a transport mechanism. It often relies on a single URI for all operations and uses XML for data exchange.
+
+Level 1 - Resources: At this level, resources are introduced, and each resource is identified by a unique URI. However, the focus is on using HTTP methods to perform actions on resources rather than following RESTful principles.
+
+Level 2 - HTTP Verbs: Level 2 introduces the use of standard HTTP methods (GET, POST, PUT, DELETE) to perform actions on resources. This level also emphasizes the use of proper URIs for resources.
+
+Level 3 - Hypermedia Controls: The highest level of REST maturity involves the use of hypermedia controls. This means that in addition to standard HTTP methods, the API includes links and controls that guide the client on how to interact with the resources. HATEOAS (Hypermedia as the Engine of Application State) is a key principle at this level.
+
+Reaching Level 3 implies full adherence to REST principles, allowing for a more flexible and discoverable API.
+
+> **References:**
+>
+> - [4 Maturity Levels of REST API Design](https://blog.restcase.com/4-maturity-levels-of-rest-api-design/)
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+--- 
+
+### 7.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+
+7.1.2 | REST API: What constraints does the REST have?
+
+Client-Server Architecture: The system is divided into client and server components, allowing them to evolve independently.
+
+Statelessness: Each request from a client to a server must contain all the information needed to understand and fulfill the request. The server should not store any information about the client's state between requests.
+
+Cacheability: Responses from the server can be labeled as cacheable or non-cacheable. Caching can improve efficiency and scalability.
+
+Uniform Interface: A uniform and consistent set of constraints is applied to the entire system's architecture, providing a simple and standardized way to interact with resources.
+
+Layered System: The architecture can be composed of multiple layers, each with a specific functionality. Each layer must only be aware of the layer directly beneath it and should not have knowledge about the layers above.
+
+Code on Demand (optional): Servers can provide executable code or scripts to clients on demand. This constraint is optional and not commonly used in typical RESTful APIs.
+
+These constraints help create scalable, maintainable, and adaptable web services that can be easily extended or modified over time.
+
+---
+
+### 7.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+7.1.3 | REST API: Name the main Http methods. What is the difference between Put and Patch? | High     |
+
+GET: Used to retrieve a representation of a resource.
+
+POST: Used to submit data to be processed to a specified resource.
+
+PUT: Used to update a current representation of a resource with a new one.
+
+DELETE: Used to request the removal of a resource.
+
+PATCH: Used to apply partial modifications to a resource.
+
+HEAD: Similar to GET but used to retrieve only the headers of a resource.
+
+OPTIONS: Used to describe the communication options for the target resource.
+
+TRACE method performs a message loop-back test along the path to the target resource, providing a useful debugging mechanism.
+
+Difference between PUT and PATCH:
+
+PUT: The PUT method is used to update a resource or create a new resource if it doesn't exist. When using PUT, the entire resource is replaced with the new representation provided in the request.
+
+PATCH: The PATCH method is used to apply partial modifications to a resource. It means that only the specified fields in the request need to be updated, leaving the rest of the resource unchanged. PATCH is useful when you want to update specific attributes without affecting the entire resource.
+
+In summary, PUT is used for full updates, while PATCH is used for partial updates.
+
+---
+### 7.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+7.1.4 | REST API: What status should be sent in a response to a create object request?      | Medium   |
+201
+
+Status Code	Description	Examples
+100 Continue	Continue with the request.	Sent by the server to indicate that it is ready to continue processing the client's request.
+101 Switching Protocols	Server is indicating a switch to a different protocol.	For example, the server uses this code when switching to a WebSocket.
+200 OK	The request was successful.	A GET request successfully retrieved the resource.
+201 Created	The request was successful, and a new resource was created.	A POST request successfully created a new resource.
+204 No Content	The request was successful, but there is no additional content.	A DELETE request successfully removed a resource.
+206 Partial Content	The partial request was successful.	Used for loading parts of a file or streaming media data.
+300 Multiple Choices	The request has more than one possible response.	The client can choose one of them.
+301 Moved Permanently	The resource has permanently moved to a new location, and the client should request it from there.	Used for permanent redirection.
+304 Not Modified	The resource has not been modified since the last request.	The client can use its cached version.
+400 Bad Request	The server cannot or will not process the request due to an error on the client's part.	Invalid request, missing parameters, etc.
+401 Unauthorized	The client must authenticate to get the requested response.	Missing or incorrect credentials.
+403 Forbidden	The client does not have access rights to the content.	Insufficient permissions for the requested action.
+404 Not Found	The requested resource could not be found.	The resource is not available on the server.
+405 Method Not Allowed	The method specified in the request is not allowed for the resource.	Attempting to perform an invalid HTTP method.
+409 Conflict	There is a conflict with the current state of the target resource.	For example, a conflict when attempting to create a duplicate resource.
+500 Internal Server Error	A generic error message returned when an unexpected condition was encountered on the server.	Something went wrong on the server side.
+503 Service Unavailable	The server is not ready to handle the request.	Used when the server is in maintenance mode or overloaded.
+
+---
+7.2   | explain the MVC model.
+### 7.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+
+7.3 What is GraphQL? What are its advantages over REST API?
+
+### 7.0 Name of the question?
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+
+
+
+7.4   | Name the key principles of OOP?
+
+
+### 7.0 Name of the question?
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+7.5   | What is a dependency injection?
+### 7.0 Name of the question?
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+7.6   | What is a Layered Architecture? Give a few examples
+### 7.0 Name of the question?
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+
+
+## Databases
+
+### 8.1.0 RDBMS What is it?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Building Blocks of ExpressJS Jingle fanny song](https://www.youtube.com/watch?v=98sZfNTqzI0)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.0 Name of the question?
+
+
+> **References:**
+>
+> - []()
+> - []()
+> - []()
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+
+
+
+
+

@@ -76,19 +76,19 @@
 
 ## 7 Software design
 
-| Index | No.   | Questions                                                                                   | Priority |
-|-------|-------|---------------------------------------------------------------------------------------------|----------|
-|       | **7** | **Software design**                                                                         |          |
-| 37    | 7.1   | [REST API: What is it?](#71-rest-api-what-is-it)                                            | High     |
-| 38    | 7.1.1 | [REST API: What are the Levels of REST API?](#711-rest-api-what-are-the-levels-of-rest-api) | Low      |
-| 39    | 7.1.2 | REST API: What constraints does the REST have?                                              | Medium   |
-| 40    | 7.1.3 | REST API: Name the main Http methods. What is the difference between Put and Patch?         | High     |
-| 41    | 7.1.4 | REST API: What status should be sent in a response to a create object request?              | Medium   |
-| 42    | 7.2   | explain the MVC model.                                                                      | High     |
-| 43    | 7.3   | What is GraphQL? What are its advantages over REST API?                                     | Low      |
-| 44    | 7.4   | Name the key principles of OOP?                                                             | High     |
-| 45    | 7.5   | What is a dependency injection?                                                             | Medium   |
-| 46    | 7.6   | What is a Layered Architecture? Give a few examples                                         | Medium   |
+| Index | No.   | Questions                                                                                                                                                           | Priority |
+|-------|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+|       | **7** | **Software design**                                                                                                                                                 |          |
+| 37    | 7.1   | [REST API: What is it?](#71-rest-api-what-is-it)                                                                                                                    | High     |
+| 38    | 7.1.1 | [REST API: What are the Levels of REST API?](#711-rest-api-what-are-the-levels-of-rest-api)                                                                         | Low      |
+| 39    | 7.1.2 | [REST API: What constraints does the REST have?](#712-rest-api-what-constraints-does-the-rest-have)                                                                 | Medium   |
+| 40    | 7.1.3 | [REST API: Name the main Http methods. What is the difference between Put and Patch?](#713-rest-api-name-the-main-http-methods)                                     | High     |
+| 41    | 7.1.4 | [REST API: What status should be sent in a response to a create object request?](#714-rest-api-what-status-should-be-sent-in-a-response-to-a-create-object-request) | Medium   |
+| 42    | 7.2   | [Explain the MVC model](#72-explain-the-MVC-model)                                                                                                                  | High     |
+| 43    | 7.3   | [What is GraphQL? What are its advantages over REST API?](#73-what-is-GraphQl)                                                                                      | Low      |
+| 44    | 7.4   | [Name the key principles of OOP?](#74-name-the-key-principles-of-OOP)                                                                                               | High     |
+| 45    | 7.5   | [What is a dependency injection?](#75-What-is-a-dependency-injection)                                                                                               | Medium   |
+| 46    | 7.6   | [What is a Layered Architecture? Give a few examples](#76-What-is-a-Layered-Architecture)                                                                           | Medium   |
 
 ## 8 Databases
 
@@ -971,92 +971,71 @@ REST API is widely used for building web services that provide access to data an
 
 The levels of REST API, often referred to as Richardson Maturity Model, are a set of criteria or principles that define the sophistication and adherence to RESTful principles in a web service. There are four levels in this model:
 
-Level 0 - The Swamp of POX (Plain Old XML): In this level, the web service doesn't adhere to REST principles and simply uses HTTP as a transport mechanism. It often relies on a single URI for all operations and uses XML for data exchange.
+**Level 0** - The Swamp of POX (Plain Old XML): In this level, the web service doesn't adhere to REST principles and simply uses HTTP as a transport mechanism. It often relies on a single URI for all operations and uses XML for data exchange.
 
-Level 1 - Resources: At this level, resources are introduced, and each resource is identified by a unique URI. However, the focus is on using HTTP methods to perform actions on resources rather than following RESTful principles.
+**Level 1** - Resources: At this level, resources are introduced, and each resource is identified by a unique URI. However, the focus is on using HTTP methods to perform actions on resources rather than following RESTful principles.
 
-Level 2 - HTTP Verbs: Level 2 introduces the use of standard HTTP methods (GET, POST, PUT, DELETE) to perform actions on resources. This level also emphasizes the use of proper URIs for resources.
+**Level 2** - HTTP Verbs: Level 2 introduces the use of standard HTTP methods (GET, POST, PUT, DELETE) to perform actions on resources. This level also emphasizes the use of proper URIs for resources.
 
-Level 3 - Hypermedia Controls: The highest level of REST maturity involves the use of hypermedia controls. This means that in addition to standard HTTP methods, the API includes links and controls that guide the client on how to interact with the resources. HATEOAS (Hypermedia as the Engine of Application State) is a key principle at this level.
+**Level 3** - Hypermedia Controls: The highest level of REST maturity involves the use of hypermedia controls. This means that in addition to standard HTTP methods, the API includes links and controls that guide the client on how to interact with the resources. HATEOAS (Hypermedia as the Engine of Application State) is a key principle at this level.
 
 Reaching Level 3 implies full adherence to REST principles, allowing for a more flexible and discoverable API.
 
 > **References:**
 >
 > - [4 Maturity Levels of REST API Design](https://blog.restcase.com/4-maturity-levels-of-rest-api-design/)
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**
 
 --- 
 
-### 7.0 Name of the question?
+### 7.1.2 REST API: What constraints does the REST have?
 
+**Client-Server Architecture**: The system is divided into client and server components, allowing them to evolve independently.
 
-> **References:**
->
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+**Statelessness**: Each request from a client to a server must contain all the information needed to understand and fulfill the request. The server should not store any information about the client's state between requests.
 
-**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
-**[ 7 Software design ⬆ ](#7-software-design)**
+**Cacheability**: Responses from the server can be labeled as cacheable or non-cacheable. Caching can improve efficiency and scalability.
 
----
+**Uniform Interface**: A uniform and consistent set of constraints is applied to the entire system's architecture, providing a simple and standardized way to interact with resources.
 
-7.1.2 | REST API: What constraints does the REST have?
+**Layered System**: The architecture can be composed of multiple layers, each with a specific functionality. Each layer must only be aware of the layer directly beneath it and should not have knowledge about the layers above.
 
-Client-Server Architecture: The system is divided into client and server components, allowing them to evolve independently.
-
-Statelessness: Each request from a client to a server must contain all the information needed to understand and fulfill the request. The server should not store any information about the client's state between requests.
-
-Cacheability: Responses from the server can be labeled as cacheable or non-cacheable. Caching can improve efficiency and scalability.
-
-Uniform Interface: A uniform and consistent set of constraints is applied to the entire system's architecture, providing a simple and standardized way to interact with resources.
-
-Layered System: The architecture can be composed of multiple layers, each with a specific functionality. Each layer must only be aware of the layer directly beneath it and should not have knowledge about the layers above.
-
-Code on Demand (optional): Servers can provide executable code or scripts to clients on demand. This constraint is optional and not commonly used in typical RESTful APIs.
+**Code on Demand (optional)**: Servers can provide executable code or scripts to clients on demand. This constraint is optional and not commonly used in typical RESTful APIs.
 
 These constraints help create scalable, maintainable, and adaptable web services that can be easily extended or modified over time.
 
----
-
-### 7.0 Name of the question?
-
-
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+> - [https://www.webscrapingapi.com/](https://www.webscrapingapi.com/rest-api-architecture-constraints)
+> - [https://medium.com/](https://medium.com/geekculture/rest-architectural-constraints-495a50ae0651)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**
 
 ---
-7.1.3 | REST API: Name the main Http methods. What is the difference between Put and Patch? | High     |
 
-GET: Used to retrieve a representation of a resource.
+### 7.1.3 REST API: Name the main Http methods
+What is the difference between Put and Patch?
 
-POST: Used to submit data to be processed to a specified resource.
+**GET**: Used to retrieve a representation of a resource.
 
-PUT: Used to update a current representation of a resource with a new one.
+**POST**: Used to submit data to be processed to a specified resource.
 
-DELETE: Used to request the removal of a resource.
+**PUT**: Used to update a current representation of a resource with a new one.
 
-PATCH: Used to apply partial modifications to a resource.
+**DELETE**: Used to request the removal of a resource.
 
-HEAD: Similar to GET but used to retrieve only the headers of a resource.
+**PATCH**: Used to apply partial modifications to a resource.
 
-OPTIONS: Used to describe the communication options for the target resource.
+**HEAD**: Similar to GET but used to retrieve only the headers of a resource.
 
-TRACE method performs a message loop-back test along the path to the target resource, providing a useful debugging mechanism.
+**OPTIONS**: Used to describe the communication options for the target resource.
+
+**TRACE** method performs a message loop-back test along the path to the target resource, providing a useful debugging mechanism.
+
+**CONNECT** method is used to establish a tunnel, typically through a proxy server, for secure data transmission. It is often applied in the case of HTTPS connections.
 
 Difference between PUT and PATCH:
 
@@ -1065,27 +1044,19 @@ PUT: The PUT method is used to update a resource or create a new resource if it 
 PATCH: The PATCH method is used to apply partial modifications to a resource. It means that only the specified fields in the request need to be updated, leaving the rest of the resource unchanged. PATCH is useful when you want to update specific attributes without affecting the entire resource.
 
 In summary, PUT is used for full updates, while PATCH is used for partial updates.
-
----
-### 7.0 Name of the question?
-
-
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+> - [https://www.theserverside.com/](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/HTTP-methods)
+> - [https://www.youtube.com/](https://www.youtube.com/watch?v=L1DU13XiogA&t=26s)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**
 
 ---
-7.1.4 | REST API: What status should be sent in a response to a create object request?      | Medium   |
-201
 
-Status Code	Description	Examples
-100 Continue	Continue with the request.	Sent by the server to indicate that it is ready to continue processing the client's request.
+### 7.1.4 REST API: What status should be sent in a response to a create object request?
+**Status Code	Description	Examples**
+100 Continue with the request.	Sent by the server to indicate that it is ready to continue processing the client's request.
 101 Switching Protocols	Server is indicating a switch to a different protocol.	For example, the server uses this code when switching to a WebSocket.
 200 OK	The request was successful.	A GET request successfully retrieved the resource.
 201 Created	The request was successful, and a new resource was created.	A POST request successfully created a new resource.
@@ -1103,76 +1074,185 @@ Status Code	Description	Examples
 500 Internal Server Error	A generic error message returned when an unexpected condition was encountered on the server.	Something went wrong on the server side.
 503 Service Unavailable	The server is not ready to handle the request.	Used when the server is in maintenance mode or overloaded.
 
----
-7.2   | explain the MVC model.
-### 7.0 Name of the question?
-
-
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+> - [https://www.codejava.net/](https://www.codejava.net/rest-api/http-methods-and-status-codes)
+> - [https://restfulapi.net/](https://restfulapi.net/http-status-codes/)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**
 
 ---
 
-7.3 What is GraphQL? What are its advantages over REST API?
+### 7.2 Explain the MVC model?
+MVC design layers
+The MVC methodology separates an application's logic into three distinct layers:
 
-### 7.0 Name of the question?
+**Model**. The model layer is responsible for the application's data logic and storing and retrieving data from back-end data stores. The model layer might also include mechanisms for validating data and carrying out other data-related tasks. This layer is responsible for maintaining all aspects of the data and ensuring its integrity and accessibility.
+
+**View**. The view layer provides the UI necessary to interact with the application. It includes components needed to display the data and enables users to interact with that data. For example, the view layer might include buttons, links, tables, drop-down lists or text boxes.
+
+**Controller**. The controller layer contains the application logic necessary to facilitate communications across the application, acting as an interface between the view and model layers. The controller is sometimes viewed as the brains of the application, keeping everything moving and in sync.
+
+![img_6.png](img_6.png)
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+> - [https://www.techtarget.com/](https://www.techtarget.com/whatis/definition/model-view-controller-MVC#:~:text=The%20MVC%20methodology%20separates%20an,out%20other%20data%2Drelated%20tasks.)
+> - [https://developer.mozilla.org/](https://developer.mozilla.org/en-US/docs/Glossary/MVC)
+
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**
 
 ---
 
+### 7.3 What is GraphQl?
 
 
-7.4   | Name the key principles of OOP?
+What are its advantages over REST API?
 
+GraphQL is a query language for your API and a runtime for executing those queries against your data. It was developed by Facebook and provides clients with the ability to request precisely the data they need, making it more flexible and efficient compared to traditional REST APIs.
 
-### 7.0 Name of the question?
+Advantages of GraphQL over REST API:
+
+**Query Flexibility:**
+In GraphQL, clients define the structure of the data they want, and they receive exactly what they requested. This avoids over-fetching of data and reduces the amount of transmitted information.
+
+**Unified Interface:**
+Unlike REST, GraphQL doesn't require different API endpoints for different queries. A single endpoint serves all queries, making the API more straightforward and easier to use.
+
+**Reduced Number of Requests:**
+GraphQL allows fetching all the necessary data in a single request, while in REST, multiple requests might be needed for the same information. This reduces the number of requests and minimizes latency.
+
+**Auto-Documentation:**
+GraphQL automatically generates documentation for your API based on the schema, making it easier for clients to understand what data they can request.
+
+**Elimination of Over-fetching:**
+Unlike REST, where clients may receive excess or unnecessary data, GraphQL ensures an exact match between the query and the response, saving bandwidth and speeding up data retrieval.
+
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+> - [https://blog.logrocket.com/](https://blog.logrocket.com/graphql-vs-rest-api-why-you-shouldnt-use-graphql/)
+> - [https://mobilelive.medium.com/](https://mobilelive.medium.com/graphql-vs-rest-api-and-reasons-you-should-use-graphql-f6cfd0c357b8)
+> - [https://www.youtube.com/](https://www.youtube.com/watch?v=PTfZcN20fro)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**
 
 ---
-7.5   | What is a dependency injection?
-### 7.0 Name of the question?
+
+### 7.4 Name the key principles of OOP?
+
+Object-Oriented Programming (OOP) is based on several key principles. Here are the main principles of OOP:
+
+**Encapsulation:**
+Hiding the internal details of an object and providing access only to the necessary information. Objects have internal states, and their details can be protected from direct access.
+
+**Inheritance:**
+The ability to create new classes based on existing (parent) classes. The new class, called a subclass, inherits the properties and methods of the parent and can add or modify them.
+
+**Polymorphism:**
+The ability of objects to use methods with the same name but with different implementations. Polymorphism allows the same method to be called for different objects, which simplifies the code and makes it more flexible.
+
+**Abstraction:**
+Separating abstract concepts from their specific implementations. Classes and interfaces can serve as abstractions that define common characteristics and behavior, regardless of the specific implementation.
+
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+> - [https://seramasumi.github.io/docs](https://seramasumi.github.io/docs/Tech%20Knowledge/The%20four%20principles%20of%20OOP.html)
+> - [https://www.youtube.com/](https://www.youtube.com/watch?v=YpYLXq4htKY)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**
 
 ---
-7.6   | What is a Layered Architecture? Give a few examples
-### 7.0 Name of the question?
+
+### 7.5 What is a dependency injection?
+
+Dependency Injection (DI) is a design pattern in software development that allows objects to receive dependencies from an external source rather than creating them internally. It aims to decouple the components of a system by allowing them to be independent of their dependencies' concrete implementations.
+
+Here's the example of using dependency injection in JavaScript with classes:
+
+javascript
+Copy code
+```
+// Class EmailService responsible for sending emails
+class EmailService {
+    sendEmail(recipient, message) {
+    // Logic for sending an email
+        console.log(`Email sent to ${recipient}: ${message}`);
+    }
+}
+
+// Class UserService that depends on EmailService
+class UserService {
+    constructor(emailService) {
+        this.emailService = emailService;
+    }
+
+    registerUser(username, email) {
+        // Logic for registering a user
+        this.emailService.sendEmail(email, "Welcome!");
+        console.log(`User ${username} registered with email ${email}`);
+    }
+}
+
+// Creating an instance of EmailService
+const emailService = new EmailService();
+
+// Creating an instance of UserService with dependency injection (emailService)
+const userService = new UserService(emailService);
+
+// Registering a user using UserService
+userService.registerUser("Alice", "alice@example.com");
+```
+
+In this example, UserService accepts the EmailService dependency through its constructor. When creating an instance of UserService, we pass it an instance of EmailService. This makes UserService more flexible and independent of the concrete implementation of sending emails.
+
+Thus, if we need to change or replace the email sending service, we don't have to modify the code inside UserService, making our program more modular and easily maintainable.
+
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
+> - [https://stackify.com/](https://stackify.com/dependency-injection/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ 7 Software design ⬆ ](#7-software-design)**
+
+---
+
+### 7.6 What is a Layered Architecture?
+Give a few examples
+
+Layered Architecture is a methodology of software design where an application is divided into separate layers, with each layer responsible for a specific aspect of functionality. Each layer provides a certain level of abstraction and is responsible for performing specific tasks.
+
+Here are a few examples of layered architecture:
+
+**Three-Tier Architecture:**
+* Presentation Layer: Responsible for displaying the user interface and interacting with the user. This can be a web interface, mobile application, or graphical user interface (GUI).
+* Business Logic Layer: Contains the business logic of the application, such as request processing, executing business rules, and interacting with the database.
+* Data Layer: Responsible for data access and database management. This can be a database management system (DBMS), file system, or external web service.
+
+**Multi-Tier Architecture:**
+* Presentation Layer: Displays data to the user and accepts input from the user.
+* Business Logic Layer: Processes requests, executes business rules, and coordinates work between different components of the system.
+* Service Layer: Provides services and functionality for interacting with other systems or external services.
+* Data Access Layer: Responsible for data access, processing database queries, and performing data operations.
+* Monolithic Architecture:
+
+In this architecture, all components of the application are on the same level. All code, including presentation, business logic, and data access, resides in one monolith.
+
+**Examples of usage:**
+
+A web application built using Three-Tier Architecture where the front-end (presentation layer) is developed using HTML, CSS, and JavaScript, the back-end (business logic layer) is implemented using a server-side language like Node.js, and the data is stored in a database managed by a DBMS like MySQL or MongoDB.
+![img_7.png](img_7.png)
+An enterprise system using Multi-Tier Architecture where the presentation layer consists of various client applications (web, mobile, desktop), the business logic layer handles complex business processes, the service layer exposes APIs for integration with external systems, and the data access layer interacts with multiple databases or data sources.
+
+Layered architecture helps simplify development, maintenance, and scalability of applications by dividing functionality into separate components and providing clear separation of concerns between them.
+
+> **References:**
+>
+> - [https://www.oreilly.com/](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html)
+> - [https://dev.to](https://dev.to/sardarmudassaralikhan/layered-architecture-used-in-software-development-8jd)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ 7 Software design ⬆ ](#7-software-design)**

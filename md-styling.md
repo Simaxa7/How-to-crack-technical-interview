@@ -73,14 +73,17 @@ arrow:
 ↓
 
 ---
+dropdown
 
 <details>
     <summary>   
-        <b>DropDown</b>    
-    </summary>   
-    <p>Some text</p>
-        ```
-        some code
-        ```
+        DropDown   
+    </summary>
+    
+Some text
 
+```javascript
+    const a =1;
+    console.log("a= ", a)
+```
 </details>

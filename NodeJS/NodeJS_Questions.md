@@ -92,34 +92,34 @@
 
 ## 8 Databases
 
-| Index | No.      | Questions                                                        | Priority |
-|-------|----------|------------------------------------------------------------------|----------|
-|       | **8**    | **Databases**                                                    |          |
-|       | 8.1      | **_RDBMS_ (Postgres or MySQL)**                                  |          |
-| 47    | 8.1.0    | [RDBMS: What is it?](#810-rdbms-what-is-it)                      | High     |
-| 48    | 8.1.1    | How data is stored in RDBMS?                                     | High     |
-| 49    | 8.1.2    | What is a normalization concept?                                 | Medium   |
-| 50    | 8.1.3    | What table relationships do you know? How to create them?        | Medium   |
-| 51    | 8.1.4    | What is the difference between DDL and DML?                      | Medium   |
-| 52    | 8.1.5    | What data types are presented in PostgresSQL?                    | Low      |
-| 53    | 8.1.6    | How tables can be joined?                                        | High     |
-| 54    | 8.1.7    | What is a sub query?                                             | Low      |
-| 55    | 8.1.8    | Explain Transactions and ACID.                                   | High     |
-| 56    | 8.1.9    | What are Lock Levels in Postgres?                                | Low      |
-| 57    | 8.1.10   | What type of indexes do you know? When to use them?              | High     |
-| 58    | 8.1.11   | What is ORM? What problems does it solve?                        | Low      |
-|       | 8.1.12   | **TypeORM**                                                      |          |
-| 59    | 8.1.12.1 | - What is the Query Builder?                                     | Low      |
-| 60    | 8.1.12.2 | - What are Active Record and Data Mapper patterns?               | Low      |
-| 61    | 8.1.12.3 | - What is the difference between Raw Entities and Entities?      | Low      |
-| 62    | 8.1.12.4 | - How to process tables with a lot of data inside with typeorm?  | Low      |
-| 63    | 8.1.12.5 | - How to change an already defined table structure with typeorm? | High     |
-|       | 8.2      | **_NoSQL DB_**                                                   |          |
-| 64    | 8.2.1    | What is MongoDB?                                                 | High     |
-| 65    | 8.2.2    | How data is organized in MongoDB?                                | Medium   |
-| 66    | 8.2.3    | What does the BASE stand for?                                    | Medium   |
-| 67    | 8.2.4    | How to make a relationship between Documents in MongoDB?         | Medium   |
-| 68    | 8.2.5    | How scaling of NoSQL and SQL databases differs?                  | High     |
+| Index | No.      | Questions                                                                                              | Priority |
+|-------|----------|--------------------------------------------------------------------------------------------------------|----------|
+|       | **8**    | **Databases**                                                                                          |          |
+|       | 8.1      | **_RDBMS_ (Postgres or MySQL)**                                                                        |          |
+| 47    | 8.1.0    | [RDBMS: What is it?](#810-rdbms-what-is-it)                                                            | High     |
+| 48    | 8.1.1    | [How data is stored in RDBMS?](#811-How-data-is-stored-in-RDBMS)                                       | High     |
+| 49    | 8.1.2    | [What is a normalization concept?](#812-What-is-a-normalization-concept)                               | Medium   |
+| 50    | 8.1.3    | [What table relationships do you know? How to create them?](#813-What-table-relationships-do-you-know) | Medium   |
+| 51    | 8.1.4    | [What is the difference between DDL and DML?](#814-What-is-the-difference-between-DDL-and-DML)         | Medium   |
+| 52    | 8.1.5    | [What data types are presented in PostgresSQL?](#815-What-data-types-are-presented-in-PostgresSQL)     | Low      |
+| 53    | 8.1.6    | How tables can be joined?                                                                              | High     |
+| 54    | 8.1.7    | What is a sub query?                                                                                   | Low      |
+| 55    | 8.1.8    | Explain Transactions and ACID.                                                                         | High     |
+| 56    | 8.1.9    | What are Lock Levels in Postgres?                                                                      | Low      |
+| 57    | 8.1.10   | What type of indexes do you know? When to use them?                                                    | High     |
+| 58    | 8.1.11   | What is ORM? What problems does it solve?                                                              | Low      |
+|       | 8.1.12   | **TypeORM**                                                                                            |          |
+| 59    | 8.1.12.1 | - What is the Query Builder?                                                                           | Low      |
+| 60    | 8.1.12.2 | - What are Active Record and Data Mapper patterns?                                                     | Low      |
+| 61    | 8.1.12.3 | - What is the difference between Raw Entities and Entities?                                            | Low      |
+| 62    | 8.1.12.4 | - How to process tables with a lot of data inside with typeorm?                                        | Low      |
+| 63    | 8.1.12.5 | - How to change an already defined table structure with typeorm?                                       | High     |
+|       | 8.2      | [**_NoSQL DB_**](#82-NoSQL-DB)                                                                         |          |
+| 64    | 8.2.1    | What is MongoDB?                                                                                       | High     |
+| 65    | 8.2.2    | How data is organized in MongoDB?                                                                      | Medium   |
+| 66    | 8.2.3    | What does the BASE stand for?                                                                          | Medium   |
+| 67    | 8.2.4    | How to make a relationship between Documents in MongoDB?                                               | Medium   |
+| 68    | 8.2.5    | How scaling of NoSQL and SQL databases differs?                                                        | High     |
 
 ## 9 Security
 
@@ -1263,21 +1263,258 @@ Layered architecture helps simplify development, maintenance, and scalability of
 ## Databases
 
 ### 8.1.0 RDBMS What is it?
+A relational database (RDB) is a way of structuring information in tables, rows, and columns. An RDB has the ability to establish links—or relationships–between information by joining tables, which makes it easy to understand and gain insights about the relationship between various data points.
 
+A relational database management system (RDBMS) is a program that allows you to create, update, and administer a relational database. Most relational database management systems use the SQL language to access the database.
 
+Relational databases store data in tables. Tables can grow large and have a multitude of columns and records. Relational database management systems (RDBMSs) use SQL (and variants of SQL) to manage the data in these large tables. The RDBMS you use is your choice and depends on the complexity of your application.
+
+![img_8.png](img_8.png)
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Building Blocks of ExpressJS Jingle fanny song](https://www.youtube.com/watch?v=98sZfNTqzI0)
+> - [https://www.codecademy.com/article/what-is-rdbms-sql](https://www.codecademy.com/article/what-is-rdbms-sql)
+> - [https://cloud.google.com/learn](https://cloud.google.com/learn/what-is-a-relational-database#section-1)
 
 **[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
 **[ Back to Databases.js ⬆ ](#8-databases)**
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.1. How data is stored in RDBMS?
+
+Data in a relational database is stored in tables. The tables are connected by unique IDs or "keys." When a user needs to access specific information, they can use a key to access all the tables of data that have been pre-determined to be related to that key.
+
+> **References:**
+>
+> - [https://www.coursera.org/](https://www.coursera.org/articles/relational-database)
+> - [https://www.pixelstech.net/](https://www.pixelstech.net/article/1549293806-Understanding-How-is-Data-Stored-in-RDBMS)
+
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.1.2 What is a normalization concept?
+![img_9.png](img_9.png)
+
+> **References:**
+>
+> - [https://www.youtube.com/watch?v=GFQaEYEc8_8](https://www.youtube.com/watch?v=GFQaEYEc8_8)
+
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.1.3 What table relationships do you know?
+How to create them?
+
+Types of table relationships:
+
+**One-to-One:** This relationship occurs when each record in one table corresponds to only one record in another table, and vice versa. For example, each person may have only one passport, and each passport may be issued to only one person.
+
+**One-to-Many:** This relationship occurs when each record in one table can have multiple corresponding records in another table, but each record in the second table corresponds to only one record in the first table. For example, each country may have multiple cities, but each city belongs to only one country.
+
+**Many-to-Many:** This relationship occurs when each record in one table can correspond to multiple records in another table, and vice versa. For this type of relationship, an additional table, called a junction table, is required to link records from the two related tables. For example, each student may study multiple subjects, and each subject may be studied by multiple students.
+
+One-to-One Relationship:
+
+Let's say we have two tables: Employee and EmployeeDetail. Each employee has only one detail record in the EmployeeDetail table.
+To create a one-to-one relationship, we can add a foreign key column in the EmployeeDetail table that references the primary key column of the Employee table.
+SQL Query:
+```
+ALTER TABLE EmployeeDetail
+ADD FOREIGN KEY (employee_id)
+REFERENCES Employee(id);
+```
+
+One-to-Many Relationship:
+
+Consider two tables: Department and Employee. Each department can have multiple employees.
+To create a one-to-many relationship, we add a foreign key column in the Employee table that references the primary key column of the Department table.
+SQL Query:
+```
+ALTER TABLE Employee
+ADD FOREIGN KEY (department_id)
+REFERENCES Department(id);
+```
+Many-to-Many Relationship:
+
+Let's take the example of Student and Course tables. Each student can enroll in multiple courses, and each course can have multiple students.
+To create a many-to-many relationship, we introduce a junction table (e.g., Enrollment) that contains foreign key columns referencing the primary key columns of both the Student and Course tables.
+SQL Query to create the junction table:
+```
+CREATE TABLE Enrollment (
+student_id INT,
+course_id INT,
+PRIMARY KEY (student_id, course_id),
+FOREIGN KEY (student_id) REFERENCES Student(id),
+FOREIGN KEY (course_id) REFERENCES Course(id)
+);
+```
+
+<details>
+  <summary>Отошение в rd. Many-to-many и промежуточная таблица. Для чего необходима</summary>
+
+Типы отношений:
+- ManyToOne
+- OneToMany
+- ManyToMany
+- OneToOne
+
+ManyToMany использует промежуточную таблицу и нужен, когда обе стороны отношений могут иметь множество с другой стороны (например, “ученики” и “предметы”: каждый ученик во многих предметах, и каждый класс имеет множество учеников).
+Для реализации связи ManyToMany нам нужен некий посредник между двумя рассматриваемыми таблицами. Он должен хранить два внешних ключа, первый из которых ссылается на первую таблицу, а второй — на вторую.
+Связь OneToOne базируется на том, что столбец может хранить только уникальное значение, накладывается ограничение unique (либо primary key, может принимать null).
+Можно сказать, что отношение один к одному — это разделение одной и той же таблицы на две.
+
+Источник: [habr.com](https://habr.com/ru/post/488054/)
+</details>
+
+> **References:**
+>
+> - [https://habr.com/ru/articles/488054/](https://habr.com/ru/articles/488054/)
+> - [https://www.metabase.com/](https://www.metabase.com/learn/databases/table-relationships)
+> - [https://www.youtube.com/watch?v=4iTh7k8bxvk](https://www.youtube.com/watch?v=4iTh7k8bxvk)
+
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.1.4 What is the difference between DDL and DML?
+DDL is a Data Definition Language that is used to define data structures. For example: creating a table, and altering a table are instructions in SQL. DML is a Data Manipulation Language that is used to manipulate data itself. For example: insert, update, and delete are instructions in SQL.
+
+**Data Definition Language**
+DDL is used to specify a database’s structure, which includes its tables, views, indexes, and constraints.
+DDL commands come in the following types: CREATE, ALTER, DROP, RENAME, and TRUNCATE.
+DDL statements only modify the database’s schema; they have no direct effect on the data within the database.
+DDL declarations are irreversible and difficult to undo.
+
+**Data Manipulation Language**
+Inserting, updating, removing, and retrieving data from a database are all possible with DML.
+DML commands come in the following types: SELECT, INSERT, UPDATE, DELETE, and MERGE.
+DML statements have a direct impact on the database’s data.
+In the event of an error, data can be recovered thanks to the reversibility of DML statements.
+
+The database structure is shaped using DDL (Data Definition Language) commands such as CREATE and ALTER, which immediately commit permanent changes. On the other hand, explicit transaction control is necessary when using DML (Data Manipulation Language) to handle data through operations like SELECT and UPDATE. Each plays a vital function in Database Management Systems: DML manipulates data, whereas DDL defines the database.
+
+> **References:**
+>
+> - [https://www.geeksforgeeks.org](https://www.geeksforgeeks.org/difference-between-ddl-and-dml-in-dbms/)
+> - [https://www.youtube.com/watch?v=vadtry9zO5w&t=4s](https://www.youtube.com/watch?v=vadtry9zO5w&t=4s)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.1.5 What data types are presented in PostgresSQL?
+The following data types are supported by PostgreSQL:
+* Boolean
+* Character Types [ such as char, varchar, and text]
+* Numeric Types [ such as integer and floating-point number]
+* Temporal Types [ such as date, time, timestamp, and interval]
+* UUID [ for storing UUID (Universally Unique Identifiers) ]
+* Array [ for storing array strings, numbers, etc.]
+* JSON [ stores JSON data]
+* hstore [ stores key-value pair]
+* Special Types [ such as network address and geometric data]
+
+Boolean:
+In PostgreSQL, the “bool” or”boolean” keyword is used to initialize a Boolean data type. These data types can hold true, false, and null values. A boolean data type is stored in the database according to the following:
+
+1, yes, y, t, true values are converted to true
+0, no, false, f values are converted to false
+When queried for these boolean data types are converted and returned according to the following:
+t to true
+f to false
+space to null
+
+Characters :
+PostgreSQL has three character data types namely, CHAR(n), VARCHAR(n), and TEXT.
+
+CHAR(n) is used for data(string) with a fixed-length of characters with padded spaces.  In case the length of the string is smaller than the value of “n”, then the rest of the remaining spaces are automatically padded. Similarly for a string with a length greater than the value of “n”,  PostgreSQL throws an error.
+VARCHAR(n) is the variable-length character string.Similar to CHAR(n), it can store “n” length data. But unlike CHAR(n) no padding is done in case the data length is smaller than the value of “n”.
+TEXT is the variable-length character string. It can store data with unlimited length.
+Numeric:
+PostgreSQL has 2 types of numbers namely, integers and floating-point numbers.
+
+1. Integer:
+
+Small integer (SMALLINT) has a range -32, 768 to 32, 767 and has a size of 2-byte.
+Integer (INT) has a range -2, 147, 483, 648 to 2, 147, 483, 647 and has a size of 4-byte.
+Serial (SERIAL) works similar to the integers except these are automatically generated in the columns by PostgreSQL.
+2. Floating-point number:
+
+float(n) is used for floating-point numbers with n precision and can have a maximum of 8-bytes.
+float8 or real is used to represent 4-byte floating-point numbers.
+A real number N(d,p) meaning with d number of digits and p number of decimal points after, are part of numeric or numeric(d, p). These are generally very precise.
+Temporal data type:
+This data type is used to store date-time data. PostgreSQL has 5 temporal data type:
+
+DATE is used to store the dates only.
+TIME is used to stores the time of day values.
+TIMESTAMP is used to stores both date and time values.
+TIMESTAMPTZ is used to store a timezone-aware timestamp data type.
+INTERVAL is used to store periods of time.
+Arrays:
+In PostgreSQL, an array column can be used to store an array of strings or an array of integers etc. It can be handy when storing data likes storing days of months, a year, or even a week, etc.
+
+JSON:
+PostgreSQL supports 2 types of JSON types namely JSON and JSONB(Binary JSON). The JSON data type is used to store plain JSON data that get parsed every time it’s called by a query. Whereas the JSONB data type is used to store JSON data in a binary format. It is one hand makes querying data faster whereas slows down the data insertion process as it supports indexing of table data.
+
+UUID:
+The UUID data type allows you to store Universal Unique Identifiers defined by RFC 4122. The UUID values guarantee a better uniqueness than SERIAL and can be used to hide sensitive data exposed to the public such as values of id in URL.
+
+The UUID stands for Unique Universal Identifiers. These are used to give a unique ID to a data that is unique throughout the database. The UUID data type are used to store UUID of the data defined by RFC 4122. These are generally used to protect sensitive data like credit card informations and is better compared to SERIAL data type in the context of uniqueness.
+
+Special data types:
+In addition to the primitive data types, PostgreSQL also supports some special data types that are related to network or geometric. These special data types are listed below:
+
+box: It is used to store rectangular box.
+point: It is used to store geometric pair of numbers.
+lseg: It is used to store line segment.
+point: It is used to store geometric pair of numbers.
+polygon:It is used to store closed geometric.
+inet: It is used to store an IP4 address.
+macaddr: It is used to store MAC address.
+
+> **References:**
+>
+> - [https://www.geeksforgeeks.org/postgresql-data-types/](https://www.geeksforgeeks.org/postgresql-data-types/)
+> - [https://www.sqlshack.com/](https://www.sqlshack.com/an-introduction-to-postgresql-data-types-with-examples/)
+> - [https://www.postgresql.org/docs/current/datatype.html](https://www.postgresql.org/docs/current/datatype.html)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.1.6 How tables can be joined??
+Tables can be joined using SQL Joins. There are few different types of joins avaialable:
+
+* JOIN (INNER JOIN)
+* LEFT OUTER JOIN
+* RIGHT OUTER JOIN
+* CROSS JOIN
+* NATURAL JOIN
+
+> **References:**
+>
+> - [https://docs.oracle.com/](https://docs.oracle.com/javadb/10.6.2.1/ref/rrefsqlj29840.html)
+> - []()
+> - [https://www.youtube.com/](https://www.youtube.com/watch?v=3RN6bw9vrMI)
+> - [Displaying name](https://www.youtube.com/)
+
+**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
+**[ Back to Databases.js ⬆ ](#8-databases)**
+
+---
+
+### 8.1.7 Name of the question?
 
 
 > **References:**
@@ -1292,7 +1529,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.8 Name of the question?
 
 
 > **References:**
@@ -1307,7 +1544,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.9 Name of the question?
 
 
 > **References:**
@@ -1322,7 +1559,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.10 Name of the question?
 
 
 > **References:**
@@ -1337,7 +1574,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.11 Name of the question?
 
 
 > **References:**
@@ -1352,7 +1589,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.12.1 Name of the question?
 
 
 > **References:**
@@ -1367,7 +1604,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.12.2 Name of the question?
 
 
 > **References:**
@@ -1382,7 +1619,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.12.3 Name of the question?
 
 
 > **References:**
@@ -1397,7 +1634,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.12.4 Name of the question?
 
 
 > **References:**
@@ -1412,7 +1649,7 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.1.12.5 Name of the question?
 
 
 > **References:**
@@ -1427,102 +1664,12 @@ Layered architecture helps simplify development, maintenance, and scalability of
 
 ---
 
-### 8.0 Name of the question?
+### 8.2 NoSQL DB?
 
 
 > **References:**
 >
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
-
-**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
-**[ Back to Databases.js ⬆ ](#8-databases)**
-
----
-
-### 8.0 Name of the question?
-
-
-> **References:**
->
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
-
-**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
-**[ Back to Databases.js ⬆ ](#8-databases)**
-
----
-
-### 8.0 Name of the question?
-
-
-> **References:**
->
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
-
-**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
-**[ Back to Databases.js ⬆ ](#8-databases)**
-
----
-
-### 8.0 Name of the question?
-
-
-> **References:**
->
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
-
-**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
-**[ Back to Databases.js ⬆ ](#8-databases)**
-
----
-
-### 8.0 Name of the question?
-
-
-> **References:**
->
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
-
-**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
-**[ Back to Databases.js ⬆ ](#8-databases)**
-
----
-
-### 8.0 Name of the question?
-
-
-> **References:**
->
-> - []()
-> - []()
-> - []()
-> - [Displaying name](https://www.youtube.com/)
-
-**[ Back to Top ⬆ ](#table-of-contents-by-topics)**  
-**[ Back to Databases.js ⬆ ](#8-databases)**
-
----
-
-### 8.0 Name of the question?
-
-
-> **References:**
->
-> - []()
+> - [https://www.youtube.com/watch?v=IBzTDkYNB7I](https://www.youtube.com/watch?v=IBzTDkYNB7I)
 > - []()
 > - []()
 > - [Displaying name](https://www.youtube.com/)
